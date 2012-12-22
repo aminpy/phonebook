@@ -11,4 +11,17 @@
    <!-- Write your navigation rules here. You are encouraged to use CDI for 
       creating @Named managed beans. -->
 
+	<application>
+		<locale-config>
+			<default-locale>fa</default-locale>
+			<supported-locale>fa</supported-locale>
+			<supported-locale>en</supported-locale>
+			<supported-locale>ar</supported-locale>
+		</locale-config>
+		<resource-bundle>
+			<base-name>MessageResources</base-name>
+			<var>msgs</var>
+		</resource-bundle>
+	</application>
+
 </faces-config>
