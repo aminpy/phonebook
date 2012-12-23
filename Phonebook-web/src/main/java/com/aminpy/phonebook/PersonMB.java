@@ -2,22 +2,26 @@ package com.aminpy.phonebook;
 
 import java.util.List;
 import javax.ejb.EJB;
-import javax.enterprise.context.ConversationScoped;
+import javax.enterprise.context.Conversation;
+import javax.faces.bean.SessionScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
-import com.aminpy.phonebook.service.Interface.PersonEJBLocal;
 import java.io.Serializable;
 import com.aminpy.phonebook.model.Person;
+import com.aminpy.phonebook.service.PersonServiceLocal;
 
 @Named
-@ConversationScoped
+@SessionScoped
 public class PersonMB implements Serializable {
 	private static final long serialVersionUID = -6974288473265844933L;
 	private List<Person> PersonList;
 	private List<Person> filteredPersonList;
 	@EJB
-	private PersonEJBLocal PersonEJB;
+	private PersonServiceLocal personService;;
 	private Person Person;
 	private Person selectedPerson;
+	@Inject
+	private Conversation conversation;
 
 	public List<Person> getPersonList() {
 		return PersonList;
@@ -52,7 +56,9 @@ public class PersonMB implements Serializable {
 	}
 
 	public String personMng() {
-		this.setPersonList(this.PersonEJB.findAllPersons());
+		if (conversation.isTransient())
+			conversation.begin();
+		this.setPersonList(this.personService.findAllPersons());
 		return "personList.xhtml";
 	}
 }

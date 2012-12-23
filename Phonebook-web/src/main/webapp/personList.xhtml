@@ -17,10 +17,7 @@
 	rowIndexVar="rowIndex" selectionMode="single"
 	selection="#{personMB.selectedPerson}"
 	emptyMessage="#{msgs.noRecordFound}"
-	filteredValue="#{personMB.filteredPersonList}"
-	paginator="true" rows="3"
-	paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
-    rowsPerPageTemplate="3,10,15,20,30,40">
+	filteredValue="#{personMB.filteredPersonList}">
 
 	<p:column styleClass="tableRowIndex" headerText="#">
 		<div align="center">
