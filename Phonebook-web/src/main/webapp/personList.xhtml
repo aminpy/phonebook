@@ -11,7 +11,7 @@
 <h:body>
 <f:view locale="fa">
 <h:form id="table_form">
-<p:dataTable cellspacing="0" tableStyleClass="table"
+<p:dataTable id="person_table" cellspacing="0" tableStyleClass="table"
 	tableStyle="direction:rtl;width:100%;cellspacing:0" var="person"
 	value="#{personMB.personList}" rowKey="#{person.id}"
 	rowIndexVar="rowIndex" selectionMode="single"
@@ -36,7 +36,27 @@
 		filterMatchMode="contains">
 		#{person.lastName}
 	</p:column>
+
+	<p:column>
+		<p:commandLink title="#{msgs.remove}" event="click"
+			oncomplete="confirmation.show()" global="false">
+			<f:setPropertyActionListener
+				target="#{personMB.selectedPerson}" value="#{person}" />
+			<h:graphicImage name="remove.png" library="images" width="32" height="32" />
+		</p:commandLink>
+	</p:column>
 </p:dataTable>
+</h:form>
+
+<h:form id="frm1">
+	<p:confirmDialog id="confirmDialog" message="#{msgs.areYouSure}"
+		header="#{msgs.areYouSure}" severity="alert" widgetVar="confirmation">
+		<p:commandButton id="confirm" value="#{msgs.yes}"
+			update=":table_form:person_table" oncomplete="confirmation.hide()"
+			actionListener="#{personMB.personDelete}" />
+		<p:commandButton id="decline" value="#{msgs.no}" onclick="confirmation.hide()"
+			type="button" />
+	</p:confirmDialog>
 </h:form>
 </f:view>
 </h:body>

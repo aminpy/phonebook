@@ -17,4 +17,9 @@ public class PersonService implements PersonServiceLocal {
 	public List<Person> findAllPersons() {
 		return personDAO.readPerson();
 	}
+
+	@Override
+	public Person removePerson(Person person) {
+		return personDAO.deletePerson(person);
+	}
 }

@@ -2,9 +2,7 @@ package com.aminpy.phonebook;
 
 import java.util.List;
 import javax.ejb.EJB;
-import javax.enterprise.context.Conversation;
 import javax.faces.bean.SessionScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import com.aminpy.phonebook.model.Person;
@@ -14,21 +12,22 @@ import com.aminpy.phonebook.service.PersonServiceLocal;
 @SessionScoped
 public class PersonMB implements Serializable {
 	private static final long serialVersionUID = -6974288473265844933L;
-	private List<Person> PersonList;
+	private List<Person> personList;
 	private List<Person> filteredPersonList;
 	@EJB
 	private PersonServiceLocal personService;;
-	private Person Person;
+	private Person person;
 	private Person selectedPerson;
-	@Inject
-	private Conversation conversation;
+
+	// @Inject
+	// private Conversation conversation;
 
 	public List<Person> getPersonList() {
-		return PersonList;
+		return personList;
 	}
 
-	public void setPersonList(List<Person> PersonList) {
-		this.PersonList = PersonList;
+	public void setPersonList(List<Person> personList) {
+		this.personList = personList;
 	}
 
 	public Person getSelectedPerson() {
@@ -48,17 +47,20 @@ public class PersonMB implements Serializable {
 	}
 
 	public Person getPerson() {
-		return Person;
+		return person;
 	}
 
-	public void setPerson(Person Person) {
-		this.Person = Person;
+	public void setPerson(Person person) {
+		this.person = person;
 	}
 
 	public String personMng() {
-		if (conversation.isTransient())
-			conversation.begin();
 		this.setPersonList(this.personService.findAllPersons());
 		return "personList.xhtml";
+	}
+
+	public void personDelete() {
+		this.personService.removePerson(this.selectedPerson);
+		this.personList.remove(this.personList.indexOf(this.selectedPerson));
 	}
 }

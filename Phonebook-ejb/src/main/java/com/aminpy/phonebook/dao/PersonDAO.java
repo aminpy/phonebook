@@ -18,4 +18,10 @@ public class PersonDAO implements PersonDAOLocal {
 		return (List<Person>) em.createNamedQuery("findAllPersons")
 				.getResultList();
 	}
+
+	@Override
+	public Person deletePerson(Person person) {
+		em.remove(em.find(Person.class, person.getId()));
+		return person;
+	}
 }

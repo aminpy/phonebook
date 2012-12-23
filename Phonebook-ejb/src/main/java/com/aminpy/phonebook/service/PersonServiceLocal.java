@@ -6,6 +6,7 @@ import com.aminpy.phonebook.model.Person;
 
 public interface PersonServiceLocal {
 
-	List<Person> findAllPersons();
+	public List<Person> findAllPersons();
 
+	public Person removePerson(Person person);
 }
