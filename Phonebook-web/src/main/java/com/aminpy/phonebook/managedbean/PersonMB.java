@@ -1,4 +1,4 @@
-package com.aminpy.phonebook;
+package com.aminpy.phonebook.managedbean;
 
 import java.util.List;
 import javax.ejb.EJB;
