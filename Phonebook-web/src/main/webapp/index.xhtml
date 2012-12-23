@@ -4,8 +4,10 @@
 <h:head>
 </h:head>
 <h:body>
-	<f:view locale="fa">
-		<p:outputLabel value="#{msgs.hello}" />
-	</f:view>
+<f:view locale="fa">
+<h:form>
+	<h:commandLink action="#{personMB.personMng}" value="#{msgs.personList}" />
+</h:form>
+</f:view>
 </h:body>
 </html>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" xml:lang="en" lang="en"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+
+<h:body>
+<f:view locale="fa">
+<h:form id="table_form">
+<p:dataTable cellspacing="0" tableStyleClass="table"
+	tableStyle="direction:rtl;width:100%;cellspacing:0" var="person"
+	value="#{personMB.personList}" rowKey="#{person.id}"
+	rowIndexVar="rowIndex" selectionMode="single"
+	selection="#{personMB.selectedPerson}"
+	emptyMessage="#{msgs.noRecordFound}"
+	filteredValue="#{personMB.filteredPersonList}"
+	paginator="true" rows="3"
+	paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
+    rowsPerPageTemplate="3,10,15,20,30,40">
+
+	<p:column styleClass="tableRowIndex" headerText="#">
+		<div align="center">
+			<h:outputText value="#{rowIndex+1}" />
+		</div>
+	</p:column>
+
+	<p:column headerText="#{msgs.firstName}"
+		filterBy="#{person.firstName}"
+		filterMatchMode="contains">
+		#{person.firstName}
+	</p:column>
+
+	<p:column headerText="#{msgs.lastName}"
+		filterBy="#{person.lastName}"
+		filterMatchMode="contains">
+		#{person.lastName}
+	</p:column>
+</p:dataTable>
+</h:form>
+</f:view>
+</h:body>
+</html>
