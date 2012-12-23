@@ -12,6 +12,12 @@ public class PersonDAO implements PersonDAOLocal {
 	@PersistenceContext(unitName = "manager1")
 	private EntityManager em;
 
+	@Override
+	public Person createPerson(Person person) {
+		em.persist(person);
+		return person;
+	}
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Person> readPerson() {

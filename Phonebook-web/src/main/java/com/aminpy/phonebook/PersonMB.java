@@ -60,4 +60,15 @@ public class PersonMB implements Serializable {
 		this.personService.removePerson(this.selectedPerson);
 		this.personList.remove(this.personList.indexOf(this.selectedPerson));
 	}
+
+	public String personCreateLink() {
+		this.person = new Person();
+		return "personCreate.xhtml";
+	}
+
+	public String personCreate() {
+		this.personService.createPerson(this.person);
+		this.personList.add(this.person);
+		return "personList.xhtml";
+	}
 }

@@ -11,6 +11,14 @@
 <h:body>
 <f:view locale="fa">
 <h:form id="table_form">
+
+<p:panel>
+	<h:commandLink action="#{personMB.personCreateLink}"
+		title="#{msgs.create_person}">
+		<h:graphicImage name="plus.png" library="images" width="32" height="32" />
+	</h:commandLink>
+</p:panel>
+
 <p:dataTable id="person_table" cellspacing="0" tableStyleClass="table"
 	tableStyle="direction:rtl;width:100%;cellspacing:0" var="person"
 	value="#{personMB.personList}" rowKey="#{person.id}"

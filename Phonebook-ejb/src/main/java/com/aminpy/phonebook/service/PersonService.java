@@ -14,6 +14,11 @@ public class PersonService implements PersonServiceLocal {
 	private PersonDAOLocal personDAO;
 
 	@Override
+	public Person createPerson(Person person) {
+		return personDAO.createPerson(person);
+	}
+
+	@Override
 	public List<Person> findAllPersons() {
 		return personDAO.readPerson();
 	}

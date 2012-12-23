@@ -9,4 +9,6 @@ public interface PersonServiceLocal {
 	public List<Person> findAllPersons();
 
 	public Person removePerson(Person person);
+
+	public Person createPerson(Person person);
 }
