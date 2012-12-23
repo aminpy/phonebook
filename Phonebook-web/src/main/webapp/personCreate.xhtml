@@ -6,10 +6,7 @@
 	xmlns:f="http://java.sun.com/jsf/core" xml:lang="en" lang="en"
 	xmlns:p="http://primefaces.org/ui">
 
-<h:head></h:head>
-
-<h:body>
-<f:view locale="fa">
+<ui:composition template="/template/base.xhtml"><ui:define name="content">
 <h:form id="editPerson" styleClass="block-content form with-margin"
 	acceptcharset="UTF-8" enctype="application/form-data"
 	prependId="false">
@@ -54,6 +51,5 @@
 	<h:commandButton styleClass="float-left" value="#{msgs.save}"
 		action="#{personMB.personCreate}" />
 </h:form>
-</f:view>
-</h:body>
+</ui:define></ui:composition>
 </html>
