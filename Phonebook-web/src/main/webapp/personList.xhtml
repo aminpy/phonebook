@@ -19,6 +19,8 @@
 	emptyMessage="#{msgs.noRecordFound}"
 	filteredValue="#{personMB.filteredPersonList}">
 
+	<p:ajax event="rowSelect" update=":table_form:display" oncomplete="personDialog.show()" />
+
 	<p:column styleClass="tableRowIndex" headerText="#">
 		<div align="center">
 			<h:outputText value="#{rowIndex+1}" />
@@ -46,6 +48,31 @@
 		</p:commandLink>
 	</p:column>
 </p:dataTable>
+
+<p:dialog id="dialog" header="#{msgs.person_details}" widgetVar="personDialog" resizable="false"
+	showEffect="explode" hideEffect="explode" width="750">
+	<p:accordionPanel multiple="true" id="display">
+	<p:tab title="#{msgs.person_details}">
+		<p:panelGrid style="direction: rtl;width: 100%">
+			<p:row>
+				<p:column>
+		            <h:outputText value="#{msgs.firstName}: " />
+	            </p:column>
+	            <p:column styleClass="input-bg-page">
+		            <h:outputText value="#{personMB.selectedPerson.firstName}" />
+	            </p:column>
+	            
+				<p:column>
+		            <h:outputText value="#{msgs.lastName}: " />
+	            </p:column>
+	            <p:column styleClass="input-bg-page">
+		            <h:outputText value="#{personMB.selectedPerson.lastName}" />
+	            </p:column>
+			</p:row>
+		</p:panelGrid>
+	</p:tab>
+	</p:accordionPanel>
+</p:dialog>
 </h:form>
 
 <h:form id="frm1">

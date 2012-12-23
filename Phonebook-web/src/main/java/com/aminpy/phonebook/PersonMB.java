@@ -19,9 +19,6 @@ public class PersonMB implements Serializable {
 	private Person person;
 	private Person selectedPerson;
 
-	// @Inject
-	// private Conversation conversation;
-
 	public List<Person> getPersonList() {
 		return personList;
 	}
