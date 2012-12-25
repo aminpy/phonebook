@@ -53,7 +53,7 @@ public class PersonMB implements Serializable {
 
 	public String personMng() {
 		this.setPersonList(this.personService.findAllPersons());
-		return "personList.xhtml";
+		return "/pages/personList.xhtml";
 	}
 
 	public void personDelete() {
@@ -63,12 +63,12 @@ public class PersonMB implements Serializable {
 
 	public String personCreateLink() {
 		this.person = new Person();
-		return "personCreate.xhtml";
+		return "/pages/personCreate.xhtml";
 	}
 
 	public String personCreate() {
 		this.personService.createPerson(this.person);
 		this.personList.add(this.person);
-		return "personList.xhtml";
+		return "/pages/personList.xhtml";
 	}
 }
