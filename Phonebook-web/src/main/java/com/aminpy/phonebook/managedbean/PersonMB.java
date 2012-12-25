@@ -6,7 +6,7 @@ import javax.faces.bean.SessionScoped;
 import javax.inject.Named;
 import java.io.Serializable;
 import com.aminpy.phonebook.model.Person;
-import com.aminpy.phonebook.service.PersonServiceLocal;
+import com.aminpy.phonebook.service.person.PersonServiceLocal;
 
 @Named
 @SessionScoped
@@ -52,12 +52,12 @@ public class PersonMB implements Serializable {
 	}
 
 	public String personMng() {
-		this.setPersonList(this.personService.findAllPersons());
+		this.setPersonList(this.personService.personFindAll());
 		return "/pages/personList.xhtml";
 	}
 
 	public void personDelete() {
-		this.personService.removePerson(this.selectedPerson);
+		this.personService.personRemove(this.selectedPerson);
 		this.personList.remove(this.personList.indexOf(this.selectedPerson));
 	}
 
@@ -67,7 +67,7 @@ public class PersonMB implements Serializable {
 	}
 
 	public String personCreate() {
-		this.personService.createPerson(this.person);
+		this.personService.personAdd(this.person);
 		this.personList.add(this.person);
 
 		return "/pages/personList.xhtml";

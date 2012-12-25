@@ -12,8 +12,8 @@ import javax.persistence.OneToMany;
 
 @Entity
 @NamedQueries({
-		@NamedQuery(name = "findAllPersons", query = "SELECT p from Person p"),
-		@NamedQuery(name = "findByNationalCode", query = "SELECT p FROM Person p WHERE p.nationalCode = :nationalCode") })
+		@NamedQuery(name = "Person.findAll", query = "SELECT p from Person p"),
+		@NamedQuery(name = "Person.findByNationalCode", query = "SELECT p FROM Person p WHERE p.nationalCode = :nationalCode") })
 public class Person {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
