@@ -8,6 +8,7 @@
 	<persistence-unit name="manager1">
 		<jta-data-source>java:/PhonebookDS</jta-data-source>
 		<class>com.aminpy.phonebook.model.Person</class>
+		<class>com.aminpy.phonebook.model.ContactNumber</class>
 		<properties>
 			<property name="eclipselink.jdbc.driver" value="org.postgresql.Driver" />
 			<property name="eclipselink.jdbc.url" value="jdbc:postgresql://localhost:5432/phonebook_db" />

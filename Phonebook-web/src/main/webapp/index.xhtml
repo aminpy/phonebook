@@ -5,8 +5,9 @@
 <ui:composition template="/template/base.xhtml">
 	<ui:define name="content">
 		<h:form>
-			<h:commandLink action="#{personMB.personMng}"
-				value="#{msgs.personList}" />
+			<h:commandLink action="#{personMB.personMng}">
+				<h:graphicImage name="person.png" library="images" />
+			</h:commandLink>
 		</h:form>
 	</ui:define>
 </ui:composition>
