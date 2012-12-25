@@ -39,7 +39,7 @@ public class ContactNumberDAO implements ContactNumberDAOLocal {
 
 	@Override
 	public ContactNumber contactNumberDelete(ContactNumber contactNumber) {
-		em.remove(em.find(ContactNumber.class, contactNumber.getId()));
+		em.remove(em.find(ContactNumber.class, contactNumber.getContactNumberID()));
 		return contactNumber;
 	}
 }

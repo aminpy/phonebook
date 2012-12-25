@@ -39,7 +39,7 @@ public class PersonDAO implements PersonDAOLocal {
 
 	@Override
 	public Person deletePerson(Person person) {
-		em.remove(em.find(Person.class, person.getId()));
+		em.remove(em.find(Person.class, person.getPersonID()));
 		return person;
 	}
 }

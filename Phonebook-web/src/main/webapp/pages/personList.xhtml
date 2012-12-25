@@ -18,7 +18,7 @@
 
 <p:dataTable id="person_table" cellspacing="0" tableStyleClass="table"
 	tableStyle="direction:rtl;width:100%;cellspacing:0" var="person"
-	value="#{personMB.personList}" rowKey="#{person.id}"
+	value="#{personMB.personList}" rowKey="#{person.personID}"
 	rowIndexVar="rowIndex" selectionMode="single"
 	selection="#{personMB.selectedPerson}"
 	emptyMessage="#{msgs.noRecordFound}"
