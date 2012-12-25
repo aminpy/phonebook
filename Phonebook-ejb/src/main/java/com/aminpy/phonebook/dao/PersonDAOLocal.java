@@ -8,7 +8,7 @@ public interface PersonDAOLocal {
 
 	public List<Person> readPerson();
 
-	public List<Person> personRead(Person person);
+	public List<Person> personRead(String nationalCode);
 
 	public Person personUpdate(Person person);
 

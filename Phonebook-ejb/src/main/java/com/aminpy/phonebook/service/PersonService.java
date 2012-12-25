@@ -15,11 +15,16 @@ public class PersonService implements PersonServiceLocal {
 	private PersonDAOLocal personDAO;
 
 	@Override
-	public Person createPerson(Person person) throws ExpNationalCodeExist {
-		if (!personDAO.personRead(person).isEmpty()) {
-			throw new ExpNationalCodeExist("National Code already exist!");
+	public boolean isNationalCodeExist(String nationalCode)
+			throws ExpNationalCodeExist {
+		if (personDAO.personRead(nationalCode).isEmpty()) {
+			return false;
 		}
+		throw new ExpNationalCodeExist("National Code already exist!");
+	}
 
+	@Override
+	public Person createPerson(Person person) {
 		return personDAO.createPerson(person);
 	}
 

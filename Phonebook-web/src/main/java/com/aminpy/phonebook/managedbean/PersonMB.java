@@ -5,8 +5,6 @@ import javax.ejb.EJB;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Named;
 import java.io.Serializable;
-
-import com.aminpy.phonebook.exception.ExpNationalCodeExist;
 import com.aminpy.phonebook.model.Person;
 import com.aminpy.phonebook.service.PersonServiceLocal;
 
@@ -69,14 +67,9 @@ public class PersonMB implements Serializable {
 	}
 
 	public String personCreate() {
-		try {
-			this.personService.createPerson(this.person);
-
-		} catch (ExpNationalCodeExist e) {
-			System.out.println(e.getMessage());
-		}
-
+		this.personService.createPerson(this.person);
 		this.personList.add(this.person);
+
 		return "/pages/personList.xhtml";
 	}
 

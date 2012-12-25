@@ -56,7 +56,9 @@
 				<p:column colspan="2">
 					<h:inputText id="nationalCode" styleClass="full-width required"
 						required="true" value="#{personMB.person.nationalCode}"
-						requiredMessage="#{msgs.required}" />
+						requiredMessage="#{msgs.required}">
+						<f:validator validatorId="natinalCodeValidator" />
+						</h:inputText>
 				</p:column>
 				<p:column>
 					<h:message for="nationalCode" styleClass="requiredField" />

@@ -27,10 +27,9 @@ public class PersonDAO implements PersonDAOLocal {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Person> personRead(Person person) {
+	public List<Person> personRead(String nationalCode) {
 		return (List<Person>) em.createNamedQuery("findByNationalCode")
-				.setParameter("nationalCode", person.getNationalCode())
-				.getResultList();
+				.setParameter("nationalCode", nationalCode).getResultList();
 	}
 
 	@Override

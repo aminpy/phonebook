@@ -11,7 +11,10 @@ public interface PersonServiceLocal {
 
 	public Person removePerson(Person person);
 
-	public Person createPerson(Person person) throws ExpNationalCodeExist;
+	public Person createPerson(Person person);
 
 	public Person personEdit(Person person);
+
+	public boolean isNationalCodeExist(String nationalCode)
+			throws ExpNationalCodeExist;
 }
