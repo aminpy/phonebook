@@ -46,6 +46,23 @@
 					<h:message for="lastName" styleClass="requiredField" />
 				</p:column>
 			</p:row>
+			
+			<p:row>
+				<p:column width="300">
+					<h:outputLabel styleClass="required">
+						<h:outputText value="#{msgs.nationalCode}" styleClass="big" />
+					</h:outputLabel>
+				</p:column>
+				<p:column colspan="2">
+					<h:inputText id="nationalCode" styleClass="full-width required"
+						required="true" value="#{personMB.person.nationalCode}"
+						requiredMessage="#{msgs.required}" />
+				</p:column>
+				<p:column>
+					<h:message for="nationalCode" styleClass="requiredField" />
+				</p:column>
+			</p:row>
+			
 		</p:panelGrid>
 	</p:panel>
 	<h:commandButton styleClass="float-left" value="#{msgs.save}"

@@ -14,6 +14,7 @@ public class Person {
 	private Long id;
 	private String firstName;
 	private String lastName;
+	private String nationalCode;
 
 	public String getFirstName() {
 		return firstName;
@@ -37,6 +38,14 @@ public class Person {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getNationalCode() {
+		return nationalCode;
+	}
+
+	public void setNationalCode(String nationalCode) {
+		this.nationalCode = nationalCode;
 	}
 
 	@Override

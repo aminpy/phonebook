@@ -42,6 +42,11 @@
 		#{person.lastName}
 	</p:column>
 
+	<p:column headerText="#{msgs.nationalCode}" filterBy="#{person.nationalCode}"
+		filterMatchMode="contains">
+		#{person.nationalCode}
+	</p:column>
+
 	<p:column>
 		<h:commandLink title="#{msgs.update}"
 			action="#{personMB.personUpdateLink}">
@@ -77,6 +82,17 @@
 	            </p:column>
 	            <p:column styleClass="input-bg-page">
 		            <h:outputText value="#{personMB.selectedPerson.lastName}" />
+	            </p:column>
+			</p:row>
+			
+			<p:row></p:row>
+			
+			<p:row>
+				<p:column>
+		            <h:outputText value="#{msgs.nationalCode}: " />
+	            </p:column>
+	            <p:column styleClass="input-bg-page">
+		            <h:outputText value="#{personMB.selectedPerson.nationalCode}" />
 	            </p:column>
 			</p:row>
 		</p:panelGrid>
