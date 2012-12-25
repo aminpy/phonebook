@@ -8,7 +8,7 @@ public interface ContactNumberDAOLocal {
 
 	public List<ContactNumber> contactNumberRead();
 
-	public List<ContactNumber> contactNumberRead(String nationalCode);
+	public List<ContactNumber> contactNumberRead(String number);
 
 	public ContactNumber contactNumberUpdate(ContactNumber contactNumber);
 

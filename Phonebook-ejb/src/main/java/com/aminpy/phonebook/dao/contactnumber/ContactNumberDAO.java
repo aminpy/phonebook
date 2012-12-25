@@ -27,9 +27,9 @@ public class ContactNumberDAO implements ContactNumberDAOLocal {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<ContactNumber> contactNumberRead(String nationalCode) {
+	public List<ContactNumber> contactNumberRead(String number) {
 		return (List<ContactNumber>) em.createNamedQuery("ContactNumber.findByNumber")
-				.setParameter("nationalCode", nationalCode).getResultList();
+				.setParameter("number", number).getResultList();
 	}
 
 	@Override

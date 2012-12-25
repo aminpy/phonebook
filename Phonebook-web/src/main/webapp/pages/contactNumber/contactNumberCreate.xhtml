@@ -24,9 +24,11 @@
 					</h:outputLabel>
 				</p:column>
 				<p:column colspan="2">
-					<h:inputText id="firstName" styleClass="full-width required"
+					<h:inputText id="number" styleClass="full-width required"
 						required="true" value="#{contactNumberMB.contactNumber.number}"
-						requiredMessage="#{msgs.required}" />
+						requiredMessage="#{msgs.required}">
+						<f:validator validatorId="numberDuplicationValidator" />
+					</h:inputText>
 				</p:column>
 				<p:column>
 					<h:message for="number" styleClass="requiredField" />
