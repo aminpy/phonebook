@@ -5,6 +5,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 import com.aminpy.phonebook.dao.PersonDAOLocal;
+import com.aminpy.phonebook.exception.ExpNationalCodeExist;
 import com.aminpy.phonebook.model.Person;
 
 @Stateless
@@ -14,8 +15,9 @@ public class PersonService implements PersonServiceLocal {
 	private PersonDAOLocal personDAO;
 
 	@Override
-	public Person createPerson(Person person) {
-		return personDAO.createPerson(person);
+	public Person createPerson(Person person) throws ExpNationalCodeExist {
+		throw new ExpNationalCodeExist("National Code already exist!");
+//		return personDAO.createPerson(person);
 	}
 
 	@Override
