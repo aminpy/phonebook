@@ -5,7 +5,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import com.aminpy.phonebook.dao.person.PersonDAOLocal;
 import com.aminpy.phonebook.exception.person.NationalCodeDuplicationException;
-import com.aminpy.phonebook.model.Person;
+import com.aminpy.phonebook.model.person.Person;
 
 @Stateless
 public class PersonService implements PersonServiceLocal {

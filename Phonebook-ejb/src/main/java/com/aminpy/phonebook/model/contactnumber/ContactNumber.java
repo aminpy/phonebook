@@ -1,4 +1,4 @@
-package com.aminpy.phonebook.model;
+package com.aminpy.phonebook.model.contactnumber;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import com.aminpy.phonebook.model.person.Person;
 
 @Entity
 @NamedQueries({

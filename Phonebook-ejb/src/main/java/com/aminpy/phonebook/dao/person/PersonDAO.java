@@ -4,7 +4,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import com.aminpy.phonebook.model.Person;
+import com.aminpy.phonebook.model.person.Person;
 
 @Stateless
 public class PersonDAO implements PersonDAOLocal {

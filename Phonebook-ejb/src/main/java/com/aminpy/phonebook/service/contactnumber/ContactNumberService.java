@@ -5,7 +5,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import com.aminpy.phonebook.dao.contactnumber.ContactNumberDAOLocal;
 import com.aminpy.phonebook.exception.contactnumber.NumberDuplicationException;
-import com.aminpy.phonebook.model.ContactNumber;
+import com.aminpy.phonebook.model.contactnumber.ContactNumber;
 
 @Stateless
 public class ContactNumberService implements ContactNumberServiceLocal {

@@ -12,7 +12,7 @@
 
 <p:panel>
 	<h:commandLink action="#{personMB.personCreateLink}" title="#{msgs.create_person}">
-		<h:graphicImage name="plus.png" library="images" width="32" height="32" />
+		<h:graphicImage name="plus.png" library="img" width="32" height="32" />
 	</h:commandLink>
 </p:panel>
 
@@ -52,14 +52,14 @@
 			action="#{personMB.personUpdateLink}">
 			<f:setPropertyActionListener
 				target="#{personMB.selectedPerson}" value="#{person}" />
-			<h:graphicImage name="update.png" library="images" />
+			<h:graphicImage name="update.png" library="img" />
 		</h:commandLink>
 	
 		<p:commandLink title="#{msgs.remove}" event="click"
 			oncomplete="confirmation.show()" global="false">
 			<f:setPropertyActionListener
 				target="#{personMB.selectedPerson}" value="#{person}" />
-			<h:graphicImage name="remove.png" library="images" width="32" height="32" />
+			<h:graphicImage name="remove.png" library="img" width="32" height="32" />
 		</p:commandLink>
 	</p:column>
 </p:dataTable>

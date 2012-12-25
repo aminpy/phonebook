@@ -1,7 +1,6 @@
-package com.aminpy.phonebook.model;
+package com.aminpy.phonebook.model.person;
 
 import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+
+import com.aminpy.phonebook.model.contactnumber.ContactNumber;
 
 @Entity
 @NamedQueries({
@@ -27,6 +28,9 @@ public class Person {
 
 	@OneToMany(mappedBy = "person")
 	private List<ContactNumber> contactNumList;
+
+	@OneToMany(mappedBy = "person")
+	private List<MarriageStatus> marriageStatus;
 
 	public long getPersonID() {
 		return personID;
@@ -66,6 +70,14 @@ public class Person {
 
 	public void setContactNumList(List<ContactNumber> contactNumList) {
 		this.contactNumList = contactNumList;
+	}
+
+	public List<MarriageStatus> getMarriageStatus() {
+		return marriageStatus;
+	}
+
+	public void setMarriageStatus(List<MarriageStatus> marriageStatus) {
+		this.marriageStatus = marriageStatus;
 	}
 
 	@Override

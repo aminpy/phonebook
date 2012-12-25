@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" xml:lang="en" lang="en"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template/base.xhtml"><ui:define name="content">
+<h:form id="editMarriageStatus" styleClass="block-content form with-margin"
+	acceptcharset="UTF-8" enctype="application/form-data"
+	prependId="false">
+	
+	<h1><h:outputText value="#{msgs.updateMarriageStatus}" /></h1>
+
+	<p:panel id="pnl" header="#{msgs.marriageStatusDetails}"
+		toggleable="true" toggleSpeed="500" closeSpeed="2000"
+		widgetVar="panel1" style="direction: rtl;width: 100%">
+		<p:panelGrid style="direction: rtl;width: 100%">
+			<p:row>
+				<p:column width="300">
+					<h:outputLabel styleClass="required">
+						<h:outputText value="#{msgs.marriageStatus}" styleClass="big" />
+					</h:outputLabel>
+				</p:column>
+				<p:column colspan="2">
+					<h:inputText id="number" styleClass="full-width required"
+						required="true" value="#{marriageStatusMB.selectedMarriageStatus.marriageStatus}"
+						requiredMessage="#{msgs.required}" />
+				</p:column>
+				<p:column>
+					<h:message for="marriageStatus" styleClass="requiredField" />
+				</p:column>
+			</p:row>
+		</p:panelGrid>
+	</p:panel>
+	<h:commandButton styleClass="float-left" value="#{msgs.save}"
+		action="#{marriageStatusMB.marriageStatusUpdate}" />
+</h:form>
+</ui:define></ui:composition>
+</html>

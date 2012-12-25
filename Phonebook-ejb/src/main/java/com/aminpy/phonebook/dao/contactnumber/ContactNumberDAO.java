@@ -4,7 +4,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import com.aminpy.phonebook.model.ContactNumber;
+import com.aminpy.phonebook.model.contactnumber.ContactNumber;
 
 @Stateless
 public class ContactNumberDAO implements ContactNumberDAOLocal {
@@ -21,14 +21,15 @@ public class ContactNumberDAO implements ContactNumberDAOLocal {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<ContactNumber> contactNumberRead() {
-		return (List<ContactNumber>) em.createNamedQuery("ContactNumber.findAll")
-				.getResultList();
+		return (List<ContactNumber>) em.createNamedQuery(
+				"ContactNumber.findAll").getResultList();
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<ContactNumber> contactNumberRead(String number) {
-		return (List<ContactNumber>) em.createNamedQuery("ContactNumber.findByNumber")
+		return (List<ContactNumber>) em
+				.createNamedQuery("ContactNumber.findByNumber")
 				.setParameter("number", number).getResultList();
 	}
 
@@ -39,7 +40,8 @@ public class ContactNumberDAO implements ContactNumberDAOLocal {
 
 	@Override
 	public ContactNumber contactNumberDelete(ContactNumber contactNumber) {
-		em.remove(em.find(ContactNumber.class, contactNumber.getContactNumberID()));
+		em.remove(em.find(ContactNumber.class,
+				contactNumber.getContactNumberID()));
 		return contactNumber;
 	}
 }

@@ -1,7 +1,7 @@
 package com.aminpy.phonebook.dao.contactnumber;
 
 import java.util.List;
-import com.aminpy.phonebook.model.ContactNumber;
+import com.aminpy.phonebook.model.contactnumber.ContactNumber;
 
 public interface ContactNumberDAOLocal {
 	public ContactNumber contactNumberCreate(ContactNumber contactNumber);

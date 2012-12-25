@@ -11,20 +11,20 @@
 <h:form id="table_form">
 
 <p:panel>
-	<h:commandLink action="#{contactNumberMB.contactNumberCreateLink}" title="#{msgs.createContactNumber}">
+	<h:commandLink action="#{marriageStatusMB.marriageStatusCreateLink}" title="#{msgs.createMarriageStatus}">
 		<h:graphicImage name="plus.png" library="img" width="32" height="32" />
 	</h:commandLink>
 </p:panel>
 
-<p:dataTable id="contactNumber_table" cellspacing="0" tableStyleClass="table"
-	tableStyle="direction:rtl;width:100%;cellspacing:0" var="contactNumber"
-	value="#{contactNumberMB.contactNumberList}" rowKey="#{contactNumber.contactNumberID}"
+<p:dataTable id="marriageStatus_table" cellspacing="0" tableStyleClass="table"
+	tableStyle="direction:rtl;width:100%;cellspacing:0" var="marriageStatus"
+	value="#{marriageStatusMB.marriageStatusList}" rowKey="#{marriageStatus.marriageStatusID}"
 	rowIndexVar="rowIndex" selectionMode="single"
-	selection="#{contactNumberMB.selectedContactNumber}"
+	selection="#{marriageStatusMB.selectedMarriageStatus}"
 	emptyMessage="#{msgs.noRecordFound}"
-	filteredValue="#{contactNumberMB.filteredContactNumberList}">
+	filteredValue="#{marriageStatusMB.filteredMarriageStatusList}">
 
-	<p:ajax event="rowSelect" update=":table_form:display" oncomplete="contactNumberDialog.show()" />
+	<p:ajax event="rowSelect" update=":table_form:display" oncomplete="marriageStatusDialog.show()" />
 
 	<p:column styleClass="tableRowIndex" headerText="#">
 		<div align="center">
@@ -32,39 +32,39 @@
 		</div>
 	</p:column>
 
-	<p:column headerText="#{msgs.number}" filterBy="#{contactNumber.number}"
+	<p:column headerText="#{msgs.number}" filterBy="#{marriageStatus.marriageStatus}"
 		filterMatchMode="contains">
-		#{contactNumber.number}
+		#{marriageStatus.marriageStatus}
 	</p:column>
 
 	<p:column>
 		<h:commandLink title="#{msgs.update}"
-			action="#{contactNumberMB.contactNumberUpdateLink}">
+			action="#{marriageStatusMB.marriageStatusUpdateLink}">
 			<f:setPropertyActionListener
-				target="#{contactNumberMB.selectedContactNumber}" value="#{contactNumber}" />
+				target="#{marriageStatusMB.selectedMarriageStatus}" value="#{marriageStatus}" />
 			<h:graphicImage name="update.png" library="img" />
 		</h:commandLink>
 	
 		<p:commandLink title="#{msgs.remove}" event="click"
 			oncomplete="confirmation.show()" global="false">
 			<f:setPropertyActionListener
-				target="#{contactNumberMB.selectedContactNumber}" value="#{contactNumber}" />
+				target="#{marriageStatusMB.selectedMarriageStatus}" value="#{marriageStatus}" />
 			<h:graphicImage name="remove.png" library="img" width="32" height="32" />
 		</p:commandLink>
 	</p:column>
 </p:dataTable>
 
-<p:dialog id="dialog" header="#{msgs.contactNumberDetails}" widgetVar="contactNumberDialog"
+<p:dialog id="dialog" header="#{msgs.marriageStatusDetails}" widgetVar="marriageStatusDialog"
 	resizable="false" showEffect="explode" hideEffect="explode" width="750">
 	<p:accordionPanel multiple="true" id="display">
-	<p:tab title="#{msgs.contactNumberDetails}">
+	<p:tab title="#{msgs.marriageStatusDetails}">
 		<p:panelGrid style="direction: rtl;width: 100%">
 			<p:row>
 				<p:column>
-		            <h:outputText value="#{msgs.number}: " />
+		            <h:outputText value="#{msgs.marriageStatus}: " />
 	            </p:column>
 	            <p:column styleClass="input-bg-page">
-		            <h:outputText value="#{contactNumberMB.selectedContactNumber.number}" />
+		            <h:outputText value="#{marriageStatusMB.selectedMarriageStatus.marriageStatus}" />
 	            </p:column>
 			</p:row>
 		</p:panelGrid>
@@ -77,8 +77,8 @@
 	<p:confirmDialog id="confirmDialog" message="#{msgs.areYouSure}"
 		header="#{msgs.areYouSure}" severity="alert" widgetVar="confirmation">
 		<p:commandButton id="confirm" value="#{msgs.yes}"
-			update=":table_form:contactNumber_table" oncomplete="confirmation.hide()"
-			actionListener="#{contactNumberMB.contactNumberDelete}" />
+			update=":table_form:marriageStatus_table" oncomplete="confirmation.hide()"
+			actionListener="#{marriageStatusMB.marriageStatusDelete}" />
 		<p:commandButton id="decline" value="#{msgs.no}" onclick="confirmation.hide()"
 			type="button" />
 	</p:confirmDialog>

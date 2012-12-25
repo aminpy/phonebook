@@ -2,7 +2,7 @@ package com.aminpy.phonebook.service.contactnumber;
 
 import java.util.List;
 import com.aminpy.phonebook.exception.contactnumber.NumberDuplicationException;
-import com.aminpy.phonebook.model.ContactNumber;
+import com.aminpy.phonebook.model.contactnumber.ContactNumber;
 
 public interface ContactNumberServiceLocal {
 

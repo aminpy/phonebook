@@ -1,7 +1,7 @@
 package com.aminpy.phonebook.dao.person;
 
 import java.util.List;
-import com.aminpy.phonebook.model.Person;
+import com.aminpy.phonebook.model.person.Person;
 
 public interface PersonDAOLocal {
 	public Person personCreate(Person person);
