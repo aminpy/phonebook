@@ -8,6 +8,7 @@ import javax.faces.validator.FacesValidator;
 import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
 
+import com.aminpy.phonebook.common.MessageProvider;
 import com.aminpy.phonebook.exception.ExpNationalCodeExist;
 import com.aminpy.phonebook.service.PersonServiceLocal;
 
@@ -22,8 +23,10 @@ public class NationalCodeValidator implements Validator {
 			throws ValidatorException {
 		try {
 			this.personService.isNationalCodeExist(arg2.toString());
+
 		} catch (ExpNationalCodeExist e) {
-			FacesMessage msg = new FacesMessage(e.getMessage());
+			FacesMessage msg = new FacesMessage(
+					new MessageProvider().getValue(e.getMessage()));
 			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
 			throw new ValidatorException(msg);
 		}
