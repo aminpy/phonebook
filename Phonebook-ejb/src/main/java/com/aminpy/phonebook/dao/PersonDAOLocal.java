@@ -8,6 +8,8 @@ public interface PersonDAOLocal {
 
 	public List<Person> readPerson();
 
+	public List<Person> personRead(Person person);
+
 	public Person personUpdate(Person person);
 
 	public Person deletePerson(Person person);

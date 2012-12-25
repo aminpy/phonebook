@@ -25,6 +25,14 @@ public class PersonDAO implements PersonDAOLocal {
 				.getResultList();
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Person> personRead(Person person) {
+		return (List<Person>) em.createNamedQuery("findByNationalCode")
+				.setParameter("nationalCode", person.getNationalCode())
+				.getResultList();
+	}
+
 	@Override
 	public Person personUpdate(Person person) {
 		return em.merge(person);
