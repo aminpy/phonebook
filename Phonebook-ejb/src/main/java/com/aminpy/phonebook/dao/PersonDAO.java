@@ -26,6 +26,11 @@ public class PersonDAO implements PersonDAOLocal {
 	}
 
 	@Override
+	public Person personUpdate(Person person) {
+		return em.merge(person);
+	}
+
+	@Override
 	public Person deletePerson(Person person) {
 		em.remove(em.find(Person.class, person.getId()));
 		return person;

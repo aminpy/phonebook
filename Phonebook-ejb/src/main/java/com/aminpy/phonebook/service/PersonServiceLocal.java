@@ -11,4 +11,6 @@ public interface PersonServiceLocal {
 	public Person removePerson(Person person);
 
 	public Person createPerson(Person person);
+
+	public Person personEdit(Person person);
 }

@@ -71,4 +71,14 @@ public class PersonMB implements Serializable {
 		this.personList.add(this.person);
 		return "/pages/personList.xhtml";
 	}
+
+	public String personUpdateLink() {
+		this.setPerson(this.selectedPerson);
+		return "/pages/personUpdate.xhtml";
+	}
+
+	public String personUpdate() {
+		this.personService.personEdit(this.selectedPerson);
+		return "/pages/personList.xhtml";
+	}
 }

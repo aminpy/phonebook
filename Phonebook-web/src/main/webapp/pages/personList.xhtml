@@ -46,6 +46,13 @@
 	</p:column>
 
 	<p:column>
+		<h:commandLink title="#{msgs.update}"
+			action="#{personMB.personUpdateLink}">
+			<f:setPropertyActionListener
+				target="#{personMB.selectedPerson}" value="#{person}" />
+			<h:graphicImage name="update.png" library="images" />
+		</h:commandLink>
+	
 		<p:commandLink title="#{msgs.remove}" event="click"
 			oncomplete="confirmation.show()" global="false">
 			<f:setPropertyActionListener
@@ -55,8 +62,8 @@
 	</p:column>
 </p:dataTable>
 
-<p:dialog id="dialog" header="#{msgs.person_details}" widgetVar="personDialog" resizable="false"
-	showEffect="explode" hideEffect="explode" width="750">
+<p:dialog id="dialog" header="#{msgs.person_details}" widgetVar="personDialog"
+	resizable="false" showEffect="explode" hideEffect="explode" width="750">
 	<p:accordionPanel multiple="true" id="display">
 	<p:tab title="#{msgs.person_details}">
 		<p:panelGrid style="direction: rtl;width: 100%">
