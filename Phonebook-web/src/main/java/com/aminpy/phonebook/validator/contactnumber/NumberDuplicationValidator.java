@@ -1,4 +1,4 @@
-package com.aminpy.phonebook.validator;
+package com.aminpy.phonebook.validator.contactnumber;
 
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
@@ -8,22 +8,22 @@ import javax.faces.validator.FacesValidator;
 import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
 import com.aminpy.phonebook.common.MessageProvider;
-import com.aminpy.phonebook.exception.person.NationalCodeDuplicationException;
-import com.aminpy.phonebook.service.person.PersonServiceLocal;
+import com.aminpy.phonebook.exception.contactnumber.NumberDuplicationException;
+import com.aminpy.phonebook.service.contactnumber.ContactNumberServiceLocal;
 
-@FacesValidator("nationalCodeDuplicationValidator")
-public class NationalCodeDuplicationValidator implements Validator {
+@FacesValidator("numberDuplicationValidator")
+public class NumberDuplicationValidator implements Validator {
 
 	@EJB
-	private PersonServiceLocal personService;
+	private ContactNumberServiceLocal contactNumberService;
 
 	@Override
 	public void validate(FacesContext arg0, UIComponent arg1, Object arg2)
 			throws ValidatorException {
 		try {
-			this.personService.isNationalCodeExist(arg2.toString());
+			this.contactNumberService.isNumberExist(arg2.toString());
 
-		} catch (NationalCodeDuplicationException e) {
+		} catch (NumberDuplicationException e) {
 			FacesMessage msg = new FacesMessage(
 					new MessageProvider().getValue(e.getMessage()));
 			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
