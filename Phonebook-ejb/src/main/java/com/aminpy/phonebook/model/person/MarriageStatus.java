@@ -51,4 +51,14 @@ public class MarriageStatus {
 	public String toString() {
 		return this.marriageStatus;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof MarriageStatus))
+			return false;
+		else {
+			MarriageStatus marriageStatus = (MarriageStatus) obj;
+			return (this.marriageStatusID == marriageStatus.marriageStatusID);
+		}
+	}
 }
