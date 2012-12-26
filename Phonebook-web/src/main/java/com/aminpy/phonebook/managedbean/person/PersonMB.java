@@ -5,7 +5,10 @@ import javax.ejb.EJB;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Named;
 import java.io.Serializable;
+
+import com.aminpy.phonebook.model.person.MarriageStatus;
 import com.aminpy.phonebook.model.person.Person;
+import com.aminpy.phonebook.service.person.MarriageStatusServiceLocal;
 import com.aminpy.phonebook.service.person.PersonServiceLocal;
 
 @Named
@@ -15,9 +18,12 @@ public class PersonMB implements Serializable {
 	private List<Person> personList;
 	private List<Person> filteredPersonList;
 	@EJB
-	private PersonServiceLocal personService;;
+	private PersonServiceLocal personService;
+	@EJB
+	private MarriageStatusServiceLocal marriageStatusService;
 	private Person person;
 	private Person selectedPerson;
+	private List<MarriageStatus> marriageStatusList;
 
 	public List<Person> getPersonList() {
 		return personList;
@@ -51,6 +57,14 @@ public class PersonMB implements Serializable {
 		this.person = person;
 	}
 
+	public List<MarriageStatus> getMarriageStatusList() {
+		return marriageStatusList;
+	}
+
+	public void setMarriageStatusList(List<MarriageStatus> marriageStatusList) {
+		this.marriageStatusList = marriageStatusList;
+	}
+
 	public String personMng() {
 		this.setPersonList(this.personService.personFindAll());
 		return "/pages/person/personList.xhtml";
@@ -62,6 +76,7 @@ public class PersonMB implements Serializable {
 	}
 
 	public String personCreateLink() {
+		this.marriageStatusList = marriageStatusService.marriageStatusFindAll();
 		this.person = new Person();
 		return "/pages/person/personCreate.xhtml";
 	}

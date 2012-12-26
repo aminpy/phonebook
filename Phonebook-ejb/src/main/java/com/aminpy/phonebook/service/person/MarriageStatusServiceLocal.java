@@ -8,6 +8,8 @@ public interface MarriageStatusServiceLocal {
 
 	public List<MarriageStatus> marriageStatusFindAll();
 
+	public MarriageStatus findByID(long marriageStatusID);
+
 	public MarriageStatus marriageStatusRemove(MarriageStatus marriageStatus);
 
 	public MarriageStatus marriageStatusAdd(MarriageStatus marriageStatus);

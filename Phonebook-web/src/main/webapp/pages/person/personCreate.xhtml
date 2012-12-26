@@ -63,6 +63,28 @@
 				<p:column>
 					<h:message for="nationalCode" styleClass="requiredField" />
 				</p:column>
+
+				<p:column width="300">
+					<h:outputLabel styleClass="required">
+						<h:outputText value="#{msgs.marriageStatus}"
+							styleClass="big" />
+					</h:outputLabel>
+				</p:column>
+				<p:column colspan="2">
+					<h:selectOneMenu id="marriageStatusList"
+						value="#{personMB.person.marriageStatus}"
+						required="true" requiredMessage="#{msgs.required}"
+						converter="marriageStatusConverter">
+						<f:selectItem itemLabel="#{msgs.selectOne}"
+							itemValue="" />
+						<f:selectItems value="#{personMB.marriageStatusList}"
+							var="marriageStatus" itemValue="#{marriageStatus}"
+							itemLabel="#{marriageStatus.marriageStatus}" />
+					</h:selectOneMenu>
+				</p:column>
+				<p:column>
+					<h:message for="marriageStatusList" styleClass="requiredField" />
+				</p:column>
 			</p:row>
 			
 		</p:panelGrid>

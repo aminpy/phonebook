@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -26,11 +28,12 @@ public class Person {
 
 	private String nationalCode;
 
-	@OneToMany(mappedBy = "person")
-	private List<ContactNumber> contactNumList;
+	@ManyToOne
+	@JoinColumn(name = "marriageStatusID")
+	private MarriageStatus marriageStatus;
 
 	@OneToMany(mappedBy = "person")
-	private List<MarriageStatus> marriageStatus;
+	private List<ContactNumber> contactNumList;
 
 	public long getPersonID() {
 		return personID;
@@ -64,20 +67,20 @@ public class Person {
 		this.nationalCode = nationalCode;
 	}
 
+	public MarriageStatus getMarriageStatus() {
+		return marriageStatus;
+	}
+
+	public void setMarriageStatus(MarriageStatus marriageStatus) {
+		this.marriageStatus = marriageStatus;
+	}
+
 	public List<ContactNumber> getContactNumList() {
 		return contactNumList;
 	}
 
 	public void setContactNumList(List<ContactNumber> contactNumList) {
 		this.contactNumList = contactNumList;
-	}
-
-	public List<MarriageStatus> getMarriageStatus() {
-		return marriageStatus;
-	}
-
-	public void setMarriageStatus(List<MarriageStatus> marriageStatus) {
-		this.marriageStatus = marriageStatus;
 	}
 
 	@Override

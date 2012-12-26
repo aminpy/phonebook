@@ -41,4 +41,9 @@ public class MarriageStatusService implements MarriageStatusServiceLocal {
 	public MarriageStatus marriageStatusEdit(MarriageStatus marriageStatus) {
 		return marriageStatusDAO.marriageStatusUpdate(marriageStatus);
 	}
+
+	@Override
+	public MarriageStatus findByID(long marriageStatusID) {
+		return marriageStatusDAO.marriageStatusRead(marriageStatusID);
+	}
 }

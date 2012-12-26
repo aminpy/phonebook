@@ -1,13 +1,13 @@
 package com.aminpy.phonebook.model.person;
 
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 @Entity
 @NamedQueries({
@@ -20,9 +20,8 @@ public class MarriageStatus {
 
 	private String marriageStatus;
 
-	@ManyToOne
-	@JoinColumn(name = "personID")
-	private Person person;
+	@OneToMany(mappedBy = "marriageStatus")
+	private List<Person> personList;
 
 	public long getMarriageStatusID() {
 		return marriageStatusID;
@@ -40,12 +39,12 @@ public class MarriageStatus {
 		this.marriageStatus = marriageStatus;
 	}
 
-	public Person getPerson() {
-		return person;
+	public List<Person> getPersonList() {
+		return personList;
 	}
 
-	public void setPerson(Person person) {
-		this.person = person;
+	public void setPersonList(List<Person> personList) {
+		this.personList = personList;
 	}
 
 	@Override

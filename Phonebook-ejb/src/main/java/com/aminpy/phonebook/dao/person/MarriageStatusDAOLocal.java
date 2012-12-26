@@ -10,6 +10,8 @@ public interface MarriageStatusDAOLocal {
 	public List<MarriageStatus> marriageStatusRead();
 
 	public List<MarriageStatus> marriageStatusRead(String marriageStatus);
+	
+	public MarriageStatus marriageStatusRead(long marriagesStatusID);
 
 	public MarriageStatus marriageStatusUpdate(MarriageStatus marriageStatus);
 
