@@ -34,11 +34,6 @@ body {
 	font-family: Tahoma, Arial, sans-serif;
 }
 
-.ui-state-highlight,.ui-widget-content .ui-state-highlight,.ui-widget-header .ui-state-highlight
-	{
-	color: #002177;
-}
-
 .ui-menu-list {
 	float: right;
 }
