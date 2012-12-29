@@ -67,9 +67,11 @@
 
 	<p:tabView id="tabView">
 		<p:tab title="#{msgs.contactNumberList}">
-			<p:commandButton id="showDialogContactNumber" type="button"
-				value="#{msgs.add}" onclick="dlgContactNumber.show()" />
-			
+			<h:panelGroup styleClass="div plus-and-save">
+				<p:commandButton id="showDialogContactNumber" type="button"
+					value="#{msgs.add}" onclick="dlgContactNumber.show()" />
+			</h:panelGroup>
+
 			<p:dialog header="#{msgs.contactNumber_info}" widgetVar="dlgContactNumber">
 				<p:panelGrid style="direction: rtl;width: 100%">
 					<p:row>
