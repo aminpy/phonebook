@@ -5,6 +5,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Named;
 import java.io.Serializable;
+
 import com.aminpy.phonebook.model.contactnumber.ContactNumber;
 import com.aminpy.phonebook.service.contactnumber.ContactNumberServiceLocal;
 

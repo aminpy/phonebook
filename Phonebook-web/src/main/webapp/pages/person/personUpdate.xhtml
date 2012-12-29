@@ -64,8 +64,79 @@
 			</p:row>
 		</p:panelGrid>
 	</p:panel>
+
+	<p:tabView id="tabView">
+		<p:tab title="#{msgs.contactNumberList}">
+			<p:commandButton id="showDialogContactNumber" type="button"
+				value="#{msgs.add}" onclick="dlgContactNumber.show()" />
+			
+			<p:dialog header="#{msgs.contactNumber_info}" widgetVar="dlgContactNumber">
+				<p:panelGrid style="direction: rtl;width: 100%">
+					<p:row>
+						<p:column width="300">
+							<h:outputLabel styleClass="required">
+								<h:outputText value="#{msgs.number}" styleClass="big" />
+							</h:outputLabel>
+						</p:column>
+						<p:column>
+							<h:inputText id="number" styleClass="full-width"
+								value="#{personMB.contactNumber.number}" />
+						</p:column>
+						<p:column>
+							<h:message for="number" styleClass="requiredField" />
+						</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column colspan="6">
+							<p:commandButton styleClass="float-left"
+								value="#{msgs.add}"
+								actionListener="#{personMB.addContactNumber}"
+								update="contactNumberList number"
+								oncomplete="dlgContactNumber.hide();" />
+						</p:column>
+					</p:row>
+				</p:panelGrid>
+			</p:dialog>
+
+			<p:dataTable id="contactNumberList" style="direction: rtl;width: 100%;"
+				value="#{personMB.selectedPerson.contactNumberList}"
+				var="hContactNumber" rowIndexVar="rowIndex"
+				emptyMessage="#{msgs.noRecordFind}">
+
+				<p:column headerText="#{msgs.number}">
+					<h:outputText value="#{hContactNumber.number}" />
+				</p:column>
+
+				<p:column headerText="#{msgs.remove}" style="width:50px">
+					<p:commandLink title="#{msgs.remove}"
+						oncomplete="confirmationAnswer.show()">
+						<f:setPropertyActionListener
+							target="#{personMB.selectedContactNumber}" value="#{hContactNumber}" />
+						<h:graphicImage name="remove.png" library="img" width="32" height="32" />
+					</p:commandLink>
+				</p:column>
+			</p:dataTable>
+		</p:tab>
+	</p:tabView>
+
 	<h:commandButton styleClass="float-left" value="#{msgs.save}"
 		action="#{personMB.personUpdate}" />
 </h:form>
+
+<h:form id="frm1">
+	<p:confirmDialog id="confirmPersonContactNumberDialog"
+		message="#{msgs.areYouSure}" header="#{msgs.areYouSure}"
+		severity="alert" widgetVar="confirmationAnswer">
+
+		<p:commandButton value="#{msgs.yes}"
+			update=":editPerson:tabView:contactNumberList"
+			oncomplete="confirmationAnswer.hide()"
+			actionListener="#{personMB.deleteContactNumber}" />
+		<p:commandButton value="#{msgs.no}"
+			onclick="confirmationAnswer.hide()" type="button" />
+	</p:confirmDialog>
+</h:form>
+
 </ui:define></ui:composition>
 </html>

@@ -1,5 +1,7 @@
 package com.aminpy.phonebook.model.contactnumber;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,7 +16,8 @@ import com.aminpy.phonebook.model.person.Person;
 @NamedQueries({
 		@NamedQuery(name = "ContactNumber.findAll", query = "SELECT cn From ContactNumber cn"),
 		@NamedQuery(name = "ContactNumber.findByNumber", query = "SELECT cn FROM ContactNumber cn WHERE cn.number = :number") })
-public class ContactNumber {
+public class ContactNumber implements Serializable {
+	private static final long serialVersionUID = 2090092013350476183L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long contactNumberID;

@@ -3,9 +3,10 @@ package com.aminpy.phonebook.managedbean.person;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.SessionScoped;
+import javax.faces.event.ActionEvent;
 import javax.inject.Named;
 import java.io.Serializable;
-
+import com.aminpy.phonebook.model.contactnumber.ContactNumber;
 import com.aminpy.phonebook.model.person.MarriageStatus;
 import com.aminpy.phonebook.model.person.Person;
 import com.aminpy.phonebook.service.person.MarriageStatusServiceLocal;
@@ -24,6 +25,8 @@ public class PersonMB implements Serializable {
 	private Person person;
 	private Person selectedPerson;
 	private List<MarriageStatus> marriageStatusList;
+	private ContactNumber contactNumber;
+	private ContactNumber selectedContactNumber;
 
 	public List<Person> getPersonList() {
 		return personList;
@@ -65,6 +68,22 @@ public class PersonMB implements Serializable {
 		this.marriageStatusList = marriageStatusList;
 	}
 
+	public ContactNumber getContactNumber() {
+		return contactNumber;
+	}
+
+	public void setContactNumber(ContactNumber contactNumber) {
+		this.contactNumber = contactNumber;
+	}
+
+	public ContactNumber getSelectedContactNumber() {
+		return selectedContactNumber;
+	}
+
+	public void setSelectedContactNumber(ContactNumber selectedContactNumber) {
+		this.selectedContactNumber = selectedContactNumber;
+	}
+
 	public String personMng() {
 		this.setPersonList(this.personService.personFindAll());
 		return "/pages/person/personList.xhtml";
@@ -90,11 +109,24 @@ public class PersonMB implements Serializable {
 
 	public String personUpdateLink() {
 		this.setPerson(this.selectedPerson);
+		this.contactNumber = new ContactNumber();
 		return "/pages/person/personUpdate.xhtml";
 	}
 
 	public String personUpdate() {
 		this.personService.personEdit(this.selectedPerson);
+		this.personList = this.personService.personFindAll();
 		return "/pages/person/personList.xhtml";
+	}
+
+	public void addContactNumber(ActionEvent actionEvent) {
+		this.selectedPerson = this.personService.addContactNumber(
+				this.selectedPerson, this.contactNumber);
+		this.contactNumber = new ContactNumber();
+	}
+
+	public void deleteContactNumber() {
+		this.selectedPerson = this.personService.deleteContactNumber(
+				this.selectedPerson, this.selectedContactNumber);
 	}
 }

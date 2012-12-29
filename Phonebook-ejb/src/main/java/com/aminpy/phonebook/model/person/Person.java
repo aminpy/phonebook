@@ -1,7 +1,9 @@
 package com.aminpy.phonebook.model.person;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,7 +19,8 @@ import com.aminpy.phonebook.model.contactnumber.ContactNumber;
 @NamedQueries({
 		@NamedQuery(name = "Person.findAll", query = "SELECT p from Person p"),
 		@NamedQuery(name = "Person.findByNationalCode", query = "SELECT p FROM Person p WHERE p.nationalCode = :nationalCode") })
-public class Person {
+public class Person implements Serializable {
+	private static final long serialVersionUID = -4819996652263837857L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long personID;
@@ -32,8 +35,8 @@ public class Person {
 	@JoinColumn(name = "marriageStatusID")
 	private MarriageStatus marriageStatus;
 
-	@OneToMany(mappedBy = "person")
-	private List<ContactNumber> contactNumList;
+	@OneToMany(mappedBy = "person", fetch = FetchType.EAGER)
+	private List<ContactNumber> contactNumberList;
 
 	public long getPersonID() {
 		return personID;
@@ -75,12 +78,12 @@ public class Person {
 		this.marriageStatus = marriageStatus;
 	}
 
-	public List<ContactNumber> getContactNumList() {
-		return contactNumList;
+	public List<ContactNumber> getContactNumberList() {
+		return contactNumberList;
 	}
 
-	public void setContactNumList(List<ContactNumber> contactNumList) {
-		this.contactNumList = contactNumList;
+	public void setContactNumberList(List<ContactNumber> contactNumberList) {
+		this.contactNumberList = contactNumberList;
 	}
 
 	@Override

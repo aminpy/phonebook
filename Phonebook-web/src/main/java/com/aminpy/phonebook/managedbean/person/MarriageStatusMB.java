@@ -5,7 +5,6 @@ import javax.ejb.EJB;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Named;
 import java.io.Serializable;
-
 import com.aminpy.phonebook.model.person.MarriageStatus;
 import com.aminpy.phonebook.service.person.MarriageStatusServiceLocal;
 
