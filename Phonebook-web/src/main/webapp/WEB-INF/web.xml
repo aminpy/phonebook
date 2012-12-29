@@ -30,4 +30,16 @@
 		<filter-name>UTF8EncodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	
+	<context-param>
+		<description>
+            Tell the runtime where we are in the project development
+            lifecycle.  Valid values are:
+            Development, UnitTest, SystemTest, or Production.
+            The runtime will display helpful hints to correct common mistakes
+            when the value is Development.
+    </description>
+		<param-name>javax.faces.PROJECT_STAGE</param-name>
+		<param-value>Development</param-value>
+	</context-param>
 </web-app>
