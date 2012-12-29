@@ -1,5 +1,6 @@
 package com.aminpy.phonebook.service.person;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -51,6 +52,10 @@ public class PersonService implements PersonServiceLocal {
 	public Person addContactNumber(Person person, ContactNumber contactNumber) {
 		contactNumber.setPerson(person);
 		contactNumberDAO.contactNumberCreate(contactNumber);
+
+		if (person.getContactNumberList() == null)
+			person.setContactNumberList(new ArrayList<ContactNumber>());
+
 		person.getContactNumberList().add(contactNumber);
 		return personDAO.personUpdate(person);
 	}
