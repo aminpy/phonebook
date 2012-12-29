@@ -7,13 +7,17 @@
 <ui:composition template="/template/base.xhtml">
 <ui:define name="content">
 	<h:form>
-		<h:commandLink action="#{personMB.personMng}">
-			<h:graphicImage name="person.png" library="img" width="96" height="96" />
-		</h:commandLink>
+		<h:panelGroup styleClass="div main-icon">
+			<h:commandLink action="#{personMB.personMng}">
+				<h:graphicImage name="person.png" library="img" width="96" height="96" />
+			</h:commandLink>
+		</h:panelGroup>
 		
-		<h:commandLink action="#{marriageStatusMB.marriageStatusMng}">
-			<h:graphicImage name="marriageStatus.png" library="img" width="96" height="96" />
-		</h:commandLink>
+		<h:panelGroup styleClass="div main-icon">
+			<h:commandLink action="#{marriageStatusMB.marriageStatusMng}">
+				<h:graphicImage name="marriageStatus.png" library="img" width="96" height="96" />
+			</h:commandLink>
+		</h:panelGroup>
 	</h:form>
 </ui:define>
 </ui:composition>

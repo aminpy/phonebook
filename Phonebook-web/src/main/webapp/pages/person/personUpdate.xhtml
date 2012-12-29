@@ -28,7 +28,7 @@
 						required="true" value="#{personMB.selectedPerson.firstName}"
 						requiredMessage="#{msgs.required}" />
 				</p:column>
-				<p:column>
+				<p:column styleClass="error-message">
 					<h:message for="firstName" styleClass="requiredField" />
 				</p:column>
 
@@ -42,7 +42,7 @@
 						required="true" value="#{personMB.selectedPerson.lastName}"
 						requiredMessage="#{msgs.required}" />
 				</p:column>
-				<p:column>
+				<p:column styleClass="error-message">
 					<h:message for="lastName" styleClass="requiredField" />
 				</p:column>
 			</p:row>
@@ -58,7 +58,7 @@
 						required="true" value="#{personMB.selectedPerson.nationalCode}"
 						requiredMessage="#{msgs.required}" />
 				</p:column>
-				<p:column>
+				<p:column styleClass="error-message">
 					<h:message for="nationalCode" styleClass="requiredField" />
 				</p:column>
 			</p:row>
@@ -82,7 +82,7 @@
 							<h:inputText id="number" styleClass="full-width"
 								value="#{personMB.contactNumber.number}" />
 						</p:column>
-						<p:column>
+						<p:column styleClass="error-message">
 							<h:message for="number" styleClass="requiredField" />
 						</p:column>
 					</p:row>
@@ -120,8 +120,10 @@
 		</p:tab>
 	</p:tabView>
 
-	<h:commandButton styleClass="float-left" value="#{msgs.save}"
-		action="#{personMB.personUpdate}" />
+	<h:panelGroup styleClass="div plus-and-save">
+		<h:commandButton styleClass="float-left" value="#{msgs.save}"
+			action="#{personMB.personUpdate}" />
+	</h:panelGroup>
 </h:form>
 
 <h:form id="frm1">

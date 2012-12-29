@@ -30,14 +30,17 @@
 						<f:validator validatorId="marriageStatusDuplicationValidator" />
 					</h:inputText>
 				</p:column>
-				<p:column>
+				<p:column styleClass="error-message">
 					<h:message for="marriageStatus" styleClass="requiredField" />
 				</p:column>
 			</p:row>
 		</p:panelGrid>
 	</p:panel>
-	<h:commandButton styleClass="float-left" value="#{msgs.save}"
-		action="#{marriageStatusMB.marriageStatusCreate}" />
+
+	<h:panelGroup styleClass="div plus-and-save">
+		<h:commandButton styleClass="float-left" value="#{msgs.save}"
+			action="#{marriageStatusMB.marriageStatusCreate}" />
+	</h:panelGroup>
 </h:form>
 </ui:define></ui:composition>
 </html>

@@ -28,7 +28,7 @@
 						required="true" value="#{personMB.person.firstName}"
 						requiredMessage="#{msgs.required}" />
 				</p:column>
-				<p:column>
+				<p:column styleClass="error-message">
 					<h:message for="firstName" styleClass="requiredField" />
 				</p:column>
 
@@ -42,7 +42,7 @@
 						required="true" value="#{personMB.person.lastName}"
 						requiredMessage="#{msgs.required}" />
 				</p:column>
-				<p:column>
+				<p:column styleClass="error-message">
 					<h:message for="lastName" styleClass="requiredField" />
 				</p:column>
 			</p:row>
@@ -60,7 +60,7 @@
 						<f:validator validatorId="nationalCodeDuplicationValidator" />
 					</h:inputText>
 				</p:column>
-				<p:column>
+				<p:column styleClass="error-message">
 					<h:message for="nationalCode" styleClass="requiredField" />
 				</p:column>
 
@@ -89,10 +89,11 @@
 			
 		</p:panelGrid>
 	</p:panel>
-	<p:panel style="text-align: left">
+
+	<h:panelGroup styleClass="div plus-and-save">
 		<h:commandButton styleClass="float-left" value="#{msgs.save}"
 			action="#{personMB.personCreate}" />
-	</p:panel>
+	</h:panelGroup>
 </h:form>
 </ui:define></ui:composition>
 </html>

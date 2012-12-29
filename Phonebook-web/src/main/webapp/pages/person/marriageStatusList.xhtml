@@ -10,11 +10,11 @@
 <ui:define name="content">
 <h:form id="table_form">
 
-<p:panel>
+<h:panelGroup styleClass="div plus-and-save">
 	<h:commandLink action="#{marriageStatusMB.marriageStatusCreateLink}" title="#{msgs.createMarriageStatus}">
 		<h:graphicImage name="plus.png" library="img" width="32" height="32" />
 	</h:commandLink>
-</p:panel>
+</h:panelGroup>
 
 <p:dataTable id="marriageStatus_table" cellspacing="0" tableStyleClass="table"
 	tableStyle="direction:rtl;width:100%;cellspacing:0" var="marriageStatus"
