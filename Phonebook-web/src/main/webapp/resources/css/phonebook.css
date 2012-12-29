@@ -1,0 +1,77 @@
+body {
+	font-family: Tahoma, Arial, sans-serif;
+	direction: rtl !important;
+	font-size: 10pt;
+}
+
+.ui-panelgrid tr,.ui-panelgrid td {
+	border: 0 !important;
+	height: 5px;
+}
+
+.ui-tabs.ui-tabs-top>.ui-tabs-nav {
+	float: right;
+	margin-bottom: 10px;
+}
+
+.ui-widget .ui-widget {
+	clear: both;
+}
+
+.ui-tabs-panels {
+	clear: both;
+}
+
+.table thead th,.table thead td {
+	text-align: center;
+}
+
+.big {
+	font-size: 1.1em;
+}
+
+.ui-widget {
+	font-family: Tahoma, Arial, sans-serif;
+}
+
+.ui-state-highlight,.ui-widget-content .ui-state-highlight,.ui-widget-header .ui-state-highlight
+	{
+	color: #002177;
+}
+
+.ui-menu-list {
+	float: right;
+}
+
+.ui-accordion .ui-accordion-header a {
+	text-align: right;
+}
+
+.input-bg-page {
+	background-color: #DBE9EA;
+	border-radius: 2px;
+}
+
+.ui-dialog .ui-dialog-titlebar-close,.ui-dialog .ui-dialog-titlebar-minimize,.ui-dialog .ui-dialog-titlebar-maximize
+	{
+	float: left !important;
+}
+
+.ui-dialog .ui-dialog-title {
+	float: right !important;
+}
+
+.creation-link-top {
+	margin-bottom: 1em;
+	text-align: left;
+	margin-top: -1.7em;
+}
+
+.creation-link-bottom {
+	margin-top: 1em;
+	text-align: left;
+}
+
+.main-fieldset {
+	margin-top: 2em;
+}
