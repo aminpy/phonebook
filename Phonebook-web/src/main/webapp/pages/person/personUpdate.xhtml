@@ -65,6 +65,9 @@
 		</p:panelGrid>
 	</p:panel>
 
+	<p:panel id="pnl2" header="#{msgs.otherDetails}"
+		toggleable="true" toggleSpeed="500" closeSpeed="2000"
+		widgetVar="panel2" style="direction: rtl;width: 100%">
 	<p:tabView id="tabView">
 		<p:tab title="#{msgs.contactNumberList}">
 			<h:panelGroup styleClass="div plus-and-save">
@@ -72,7 +75,8 @@
 					value="#{msgs.add}" onclick="dlgContactNumber.show()" />
 			</h:panelGroup>
 
-			<p:dialog header="#{msgs.contactNumber_info}" widgetVar="dlgContactNumber">
+			<p:dialog header="#{msgs.contactNumber_info}" widgetVar="dlgContactNumber"
+				showEffect="explode" hideEffect="explode">
 				<p:panelGrid style="direction: rtl;width: 100%">
 					<p:row>
 						<p:column width="300">
@@ -121,6 +125,7 @@
 			</p:dataTable>
 		</p:tab>
 	</p:tabView>
+</p:panel>
 
 	<h:panelGroup styleClass="div plus-and-save">
 		<h:commandButton styleClass="float-left" value="#{msgs.save}"
