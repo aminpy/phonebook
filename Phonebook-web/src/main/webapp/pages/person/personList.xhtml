@@ -22,7 +22,7 @@
 	rowIndexVar="rowIndex" selectionMode="single"
 	selection="#{personMB.selectedPerson}"
 	emptyMessage="#{msgs.noRecordFound}"
-	filteredValue="#{personMB.filteredPersonList}">
+	filteredValue="#{personMB.filteredPersonList}" >
 
 	<p:ajax event="rowSelect" update=":table_form:display" oncomplete="personDialog.show()" />
 
@@ -73,7 +73,7 @@
 	resizable="false" showEffect="explode" hideEffect="explode" width="750">
 	<p:accordionPanel multiple="true" id="display">
 		<p:tab title="#{msgs.person_details}">
-			<p:panelGrid style="direction: rtl;width: 100%">
+			<p:panelGrid>
 				<p:row>
 					<p:column>
 			            <h:outputText value="#{msgs.firstName}: " />
@@ -111,7 +111,7 @@
 		</p:tab>
 
 		<p:tab title="#{msgs.contactNumberList}">
-			<p:dataTable id="contactNumberList" style="direction: rtl;width: 100%;"
+			<p:dataTable id="contactNumberList"
 				value="#{personMB.selectedPerson.contactNumberList}" var="hContactNumber"
 				rowIndexVar="rowIndex" editable="true"
 				emptyMessage="#{msgs.noRecordFind}"

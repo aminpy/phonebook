@@ -7,7 +7,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/template/base.xhtml"><ui:define name="content">
-<h:form id="editPerson" styleClass="block-content form with-margin"
+<h:form id="editPerson" 
 	acceptcharset="UTF-8" enctype="application/form-data"
 	prependId="false">
 	
@@ -15,59 +15,55 @@
 
 	<p:panel id="pnl" header="#{msgs.personalDetails}"
 		toggleable="true" toggleSpeed="500" closeSpeed="2000"
-		widgetVar="panel1" style="direction: rtl;width: 100%">
-		<p:panelGrid style="direction: rtl;width: 100%">
+		widgetVar="panel1">
+		<p:panelGrid>
 			<p:row>
 				<p:column width="300">
-					<h:outputLabel styleClass="required">
-						<h:outputText value="#{msgs.firstName}" styleClass="big" />
+					<h:outputLabel>
+						<h:outputText value="#{msgs.firstName}"  />
 					</h:outputLabel>
 				</p:column>
 				<p:column colspan="2">
-					<h:inputText id="firstName" styleClass="full-width required"
-						required="true" value="#{personMB.person.firstName}"
-						requiredMessage="#{msgs.required}" />
+					<h:inputText id="firstName" value="#{personMB.person.firstName}"
+						required="true" requiredMessage="#{msgs.required}" />
 				</p:column>
 				<p:column styleClass="error-message">
-					<h:message for="firstName" styleClass="requiredField" />
+					<h:message for="firstName" />
 				</p:column>
 
 				<p:column width="300">
-					<h:outputLabel styleClass="required">
-						<h:outputText value="#{msgs.lastName}" styleClass="big" />
+					<h:outputLabel>
+						<h:outputText value="#{msgs.lastName}" />
 					</h:outputLabel>
 				</p:column>
 				<p:column colspan="2">
-					<h:inputText id="lastName" styleClass="full-width required"
-						required="true" value="#{personMB.person.lastName}"
-						requiredMessage="#{msgs.required}" />
+					<h:inputText id="lastName" value="#{personMB.person.lastName}"
+						required="true" requiredMessage="#{msgs.required}" />
 				</p:column>
 				<p:column styleClass="error-message">
-					<h:message for="lastName" styleClass="requiredField" />
+					<h:message for="lastName" />
 				</p:column>
 			</p:row>
-			
+
 			<p:row>
 				<p:column width="300">
-					<h:outputLabel styleClass="required">
-						<h:outputText value="#{msgs.nationalCode}" styleClass="big" />
+					<h:outputLabel>
+						<h:outputText value="#{msgs.nationalCode}" />
 					</h:outputLabel>
 				</p:column>
 				<p:column colspan="2">
-					<h:inputText id="nationalCode" styleClass="full-width required"
-						required="true" value="#{personMB.person.nationalCode}"
-						requiredMessage="#{msgs.required}">
+					<h:inputText id="nationalCode" value="#{personMB.person.nationalCode}"
+						required="true" requiredMessage="#{msgs.required}">
 						<f:validator validatorId="nationalCodeDuplicationValidator" />
 					</h:inputText>
 				</p:column>
 				<p:column styleClass="error-message">
-					<h:message for="nationalCode" styleClass="requiredField" />
+					<h:message for="nationalCode" />
 				</p:column>
 
 				<p:column width="300">
-					<h:outputLabel styleClass="required">
-						<h:outputText value="#{msgs.marriageStatus}"
-							styleClass="big" />
+					<h:outputLabel>
+						<h:outputText value="#{msgs.marriageStatus}"  />
 					</h:outputLabel>
 				</p:column>
 				<p:column colspan="2">
@@ -75,24 +71,21 @@
 						value="#{personMB.person.marriageStatus}"
 						required="true" requiredMessage="#{msgs.required}"
 						converter="marriageStatusConverter">
-						<f:selectItem itemLabel="#{msgs.selectOne}"
-							itemValue="" />
+						<f:selectItem itemLabel="#{msgs.selectOne}" itemValue="" />
 						<f:selectItems value="#{personMB.marriageStatusList}"
 							var="marriageStatus" itemValue="#{marriageStatus}"
 							itemLabel="#{marriageStatus.marriageStatus}" />
 					</h:selectOneMenu>
 				</p:column>
-				<p:column>
-					<h:message for="marriageStatusList" styleClass="requiredField" />
+				<p:column styleClass="error-message">
+					<h:message for="marriageStatusList" />
 				</p:column>
 			</p:row>
-			
 		</p:panelGrid>
 	</p:panel>
 
 	<h:panelGroup styleClass="div plus-and-save">
-		<h:commandButton styleClass="float-left" value="#{msgs.save}"
-			action="#{personMB.personCreate}" />
+		<h:commandButton value="#{msgs.save}" action="#{personMB.personCreate}" />
 	</h:panelGroup>
 </h:form>
 </ui:define></ui:composition>

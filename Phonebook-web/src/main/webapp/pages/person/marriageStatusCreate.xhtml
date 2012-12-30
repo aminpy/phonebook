@@ -7,7 +7,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/template/base.xhtml"><ui:define name="content">
-<h:form id="editMarriageStatus" styleClass="block-content form with-margin"
+<h:form id="editMarriageStatus" 
 	acceptcharset="UTF-8" enctype="application/form-data"
 	prependId="false">
 	
@@ -15,30 +15,30 @@
 
 	<p:panel id="pnl" header="#{msgs.marriageStatusDetails}"
 		toggleable="true" toggleSpeed="500" closeSpeed="2000"
-		widgetVar="panel1" style="direction: rtl;width: 100%">
-		<p:panelGrid style="direction: rtl;width: 100%">
+		widgetVar="panel1">
+		<p:panelGrid>
 			<p:row>
 				<p:column width="300">
-					<h:outputLabel styleClass="required">
-						<h:outputText value="#{msgs.marriageStatus}" styleClass="big" />
+					<h:outputLabel>
+						<h:outputText value="#{msgs.marriageStatus}"  />
 					</h:outputLabel>
 				</p:column>
 				<p:column colspan="2">
-					<h:inputText id="marriageStatus" styleClass="full-width required"
+					<h:inputText id="marriageStatus" 
 						required="true" value="#{marriageStatusMB.marriageStatus.marriageStatus}"
 						requiredMessage="#{msgs.required}">
 						<f:validator validatorId="marriageStatusDuplicationValidator" />
 					</h:inputText>
 				</p:column>
 				<p:column styleClass="error-message">
-					<h:message for="marriageStatus" styleClass="requiredField" />
+					<h:message for="marriageStatus"  />
 				</p:column>
 			</p:row>
 		</p:panelGrid>
 	</p:panel>
 
 	<h:panelGroup styleClass="div plus-and-save">
-		<h:commandButton styleClass="float-left" value="#{msgs.save}"
+		<h:commandButton  value="#{msgs.save}"
 			action="#{marriageStatusMB.marriageStatusCreate}" />
 	</h:panelGroup>
 </h:form>

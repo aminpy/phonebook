@@ -7,59 +7,55 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/template/base.xhtml"><ui:define name="content">
-<h:form id="editPerson" styleClass="block-content form with-margin"
-	acceptcharset="UTF-8" enctype="application/form-data"
-	prependId="false">
+<h:form id="editPerson" acceptcharset="UTF-8" enctype="application/form-data" prependId="false">
 	
 	<h1><h:outputText value="#{msgs.update_person}" /></h1>
 
 	<p:panel id="pnl" header="#{msgs.personalDetails}"
 		toggleable="true" toggleSpeed="500" closeSpeed="2000"
-		widgetVar="panel1" style="direction: rtl;width: 100%">
-		<p:panelGrid style="direction: rtl;width: 100%">
+		widgetVar="panel1">
+		<p:panelGrid>
 			<p:row>
 				<p:column width="300">
-					<h:outputLabel styleClass="required">
-						<h:outputText value="#{msgs.firstName}" styleClass="big" />
+					<h:outputLabel>
+						<h:outputText value="#{msgs.firstName}"  />
 					</h:outputLabel>
 				</p:column>
 				<p:column colspan="2">
-					<h:inputText id="firstName" styleClass="full-width required"
-						required="true" value="#{personMB.selectedPerson.firstName}"
-						requiredMessage="#{msgs.required}" />
+					<h:inputText id="firstName" value="#{personMB.selectedPerson.firstName}"
+						required="true" requiredMessage="#{msgs.required}" />
 				</p:column>
 				<p:column styleClass="error-message">
-					<h:message for="firstName" styleClass="requiredField" />
+					<h:message for="firstName" />
 				</p:column>
 
 				<p:column width="300">
-					<h:outputLabel styleClass="required">
-						<h:outputText value="#{msgs.lastName}" styleClass="big" />
+					<h:outputLabel>
+						<h:outputText value="#{msgs.lastName}" />
 					</h:outputLabel>
 				</p:column>
 				<p:column colspan="2">
-					<h:inputText id="lastName" styleClass="full-width required"
-						required="true" value="#{personMB.selectedPerson.lastName}"
-						requiredMessage="#{msgs.required}" />
+					<h:inputText id="lastName" value="#{personMB.selectedPerson.lastName}"
+						required="true" requiredMessage="#{msgs.required}" />
 				</p:column>
 				<p:column styleClass="error-message">
-					<h:message for="lastName" styleClass="requiredField" />
+					<h:message for="lastName" />
 				</p:column>
 			</p:row>
-			
+
 			<p:row>
 				<p:column width="300">
-					<h:outputLabel styleClass="required">
-						<h:outputText value="#{msgs.nationalCode}" styleClass="big" />
+					<h:outputLabel>
+						<h:outputText value="#{msgs.nationalCode}" />
 					</h:outputLabel>
 				</p:column>
 				<p:column colspan="2">
-					<h:inputText id="nationalCode" styleClass="full-width required"
+					<h:inputText id="nationalCode" 
 						required="true" value="#{personMB.selectedPerson.nationalCode}"
 						requiredMessage="#{msgs.required}" />
 				</p:column>
 				<p:column styleClass="error-message">
-					<h:message for="nationalCode" styleClass="requiredField" />
+					<h:message for="nationalCode"  />
 				</p:column>
 			</p:row>
 		</p:panelGrid>
@@ -67,69 +63,68 @@
 
 	<p:panel id="pnl2" header="#{msgs.otherDetails}"
 		toggleable="true" toggleSpeed="500" closeSpeed="2000"
-		widgetVar="panel2" style="direction: rtl;width: 100%">
-	<p:tabView id="tabView">
-		<p:tab title="#{msgs.contactNumberList}">
-			<h:panelGroup styleClass="div plus-and-save">
-				<p:commandButton id="showDialogContactNumber" type="button"
-					value="#{msgs.add}" onclick="dlgContactNumber.show()" />
-			</h:panelGroup>
-
-			<p:dialog header="#{msgs.contactNumber_info}" widgetVar="dlgContactNumber"
-				showEffect="explode" hideEffect="explode">
-				<p:panelGrid style="direction: rtl;width: 100%">
-					<p:row>
-						<p:column width="300">
-							<h:outputLabel styleClass="required">
-								<h:outputText value="#{msgs.number}" styleClass="big" />
-							</h:outputLabel>
-						</p:column>
-						<p:column>
-							<h:inputText id="number" styleClass="full-width"
-								value="#{personMB.contactNumber.number}" />
-						</p:column>
-						<p:column styleClass="error-message">
-							<h:message for="number" styleClass="requiredField" />
-						</p:column>
-					</p:row>
-
-					<p:row>
-						<p:column colspan="6">
-							<p:commandButton styleClass="float-left"
-								value="#{msgs.add}"
-								actionListener="#{personMB.addContactNumber}"
-								update="contactNumberList number"
-								oncomplete="dlgContactNumber.hide();" />
-						</p:column>
-					</p:row>
-				</p:panelGrid>
-			</p:dialog>
-
-			<p:dataTable id="contactNumberList" style="direction: rtl;width: 100%;"
-				value="#{personMB.selectedPerson.contactNumberList}"
-				var="hContactNumber" rowIndexVar="rowIndex"
-				emptyMessage="#{msgs.noRecordFind}">
-
-				<p:column headerText="#{msgs.number}">
-					<h:outputText value="#{hContactNumber.number}" />
-				</p:column>
-
-				<p:column headerText="#{msgs.remove}" style="width:50px">
-					<p:commandLink title="#{msgs.remove}"
-						oncomplete="confirmationAnswer.show()">
-						<f:setPropertyActionListener
-							target="#{personMB.selectedContactNumber}" value="#{hContactNumber}" />
-						<h:graphicImage name="remove.png" library="img" width="32" height="32" />
-					</p:commandLink>
-				</p:column>
-			</p:dataTable>
-		</p:tab>
-	</p:tabView>
-</p:panel>
+		widgetVar="panel2">
+		<p:tabView id="tabView">
+			<p:tab title="#{msgs.contactNumberList}">
+				<h:panelGroup styleClass="div plus-and-save">
+					<p:commandButton id="showDialogContactNumber" type="button"
+						value="#{msgs.add}" onclick="dlgContactNumber.show()" />
+				</h:panelGroup>
+	
+				<p:dialog header="#{msgs.contactNumber_info}" widgetVar="dlgContactNumber"
+					showEffect="explode" hideEffect="explode" resizable="false">
+					<p:panelGrid>
+						<p:row>
+							<p:column width="300">
+								<h:outputLabel>
+									<h:outputText value="#{msgs.number}" />
+								</h:outputLabel>
+							</p:column>
+							<p:column>
+								<h:inputText id="number" 
+									value="#{personMB.contactNumber.number}" required="true"
+										requiredMessage="#{msgs.required}" />
+							</p:column>
+							<p:column styleClass="error-message">
+								<h:message for="number" />
+							</p:column>
+						</p:row>
+	
+						<p:row>
+							<p:column>
+								<p:commandButton  value="#{msgs.add}"
+									actionListener="#{personMB.addContactNumber}"
+									update="contactNumberList number"
+									oncomplete="dlgContactNumber.hide();" />
+							</p:column>
+						</p:row>
+					</p:panelGrid>
+				</p:dialog>
+	
+				<p:dataTable id="contactNumberList"
+					value="#{personMB.selectedPerson.contactNumberList}"
+					var="hContactNumber" rowIndexVar="rowIndex"
+					emptyMessage="#{msgs.noRecordFind}">
+	
+					<p:column headerText="#{msgs.number}">
+						<h:outputText value="#{hContactNumber.number}" />
+					</p:column>
+	
+					<p:column headerText="#{msgs.remove}">
+						<p:commandLink title="#{msgs.remove}"
+							oncomplete="confirmationAnswer.show()">
+							<f:setPropertyActionListener
+								target="#{personMB.selectedContactNumber}" value="#{hContactNumber}" />
+							<h:graphicImage name="remove.png" library="img" width="32" height="32" />
+						</p:commandLink>
+					</p:column>
+				</p:dataTable>
+			</p:tab>
+		</p:tabView>
+	</p:panel>
 
 	<h:panelGroup styleClass="div plus-and-save">
-		<h:commandButton styleClass="float-left" value="#{msgs.save}"
-			action="#{personMB.personUpdate}" />
+		<h:commandButton value="#{msgs.save}" action="#{personMB.personUpdate}" />
 	</h:panelGroup>
 </h:form>
 
