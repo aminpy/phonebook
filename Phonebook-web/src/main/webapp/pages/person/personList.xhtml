@@ -4,14 +4,19 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core" xml:lang="en" lang="en"
-    xmlns:p="http://primefaces.org/ui">
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:c="http://java.sun.com/jsp/jstl/core">
 
 <ui:composition template="/template/base.xhtml">
 <ui:define name="content">
 <h:form id="table_form">
 
 <!-- breadcrumb -->
-<h:link value="#{msgs.home}" outcome="/index.xhtml" /> &gt; personList
+
+<c:forEach items="#{personMB.breadCrumb}" var="link" varStatus="varStatus">
+	<h:link value="#{link.key}" outcome="#{link.value}" />
+	<h:outputText value=" > " rendered="#{!varStatus.last}" />
+</c:forEach>
 
 <h:panelGroup styleClass="div plus-and-save">
 	<h:commandLink action="#{personMB.personCreateLink}" title="#{msgs.create_person}">
@@ -78,7 +83,7 @@
 <p:dialog id="dialog" header="#{msgs.personDetails}" widgetVar="personDialog"
 	resizable="false" showEffect="explode" hideEffect="explode" width="750">
 	<p:accordionPanel multiple="true" id="display">
-		<p:tab title="#{msgs.person_details}">
+		<p:tab title="#{msgs.personDetails}">
 			<p:panelGrid>
 				<p:row>
 					<p:column>

@@ -6,19 +6,24 @@
 	xmlns:p="http://primefaces.org/ui">
 <ui:composition template="/template/base.xhtml">
 <ui:define name="content">
-	<h:form>
-		<h:panelGroup styleClass="div main-icon">
-			<h:commandLink action="#{personMB.personMng}" title="#{msgs.person}">
-				<h:graphicImage name="person.png" library="img" width="64" height="64" />
-			</h:commandLink>
-		</h:panelGroup>
-		
-		<h:panelGroup styleClass="div main-icon">
-			<h:commandLink action="#{marriageStatusMB.marriageStatusMng}" title="#{msgs.marriageStatus}">
-				<h:graphicImage name="marriageStatus.png" library="img" width="64" height="64" />
-			</h:commandLink>
-		</h:panelGroup>
-	</h:form>
+<h:form>
+	<!-- breadcrumb -->
+	<h:panelGroup styleClass="div">
+		#{msgs.home}
+	</h:panelGroup>
+
+	<h:panelGroup styleClass="div main-icon">
+		<h:commandLink action="#{personMB.personMng}" title="#{msgs.person}">
+			<h:graphicImage name="person.png" library="img" width="64" height="64" />
+		</h:commandLink>
+	</h:panelGroup>
+	
+	<h:panelGroup styleClass="div main-icon">
+		<h:commandLink action="#{marriageStatusMB.marriageStatusMng}" title="#{msgs.marriageStatus}">
+			<h:graphicImage name="marriageStatus.png" library="img" width="64" height="64" />
+		</h:commandLink>
+	</h:panelGroup>
+</h:form>
 </ui:define>
 </ui:composition>
 </html>

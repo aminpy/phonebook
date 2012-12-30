@@ -1,11 +1,15 @@
 package com.aminpy.phonebook.managedbean.person;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+
 import javax.ejb.EJB;
 import javax.faces.bean.SessionScoped;
 import javax.faces.event.ActionEvent;
 import javax.inject.Named;
 import java.io.Serializable;
+
 import com.aminpy.phonebook.model.contactnumber.ContactNumber;
 import com.aminpy.phonebook.model.person.MarriageStatus;
 import com.aminpy.phonebook.model.person.Person;
@@ -27,6 +31,7 @@ public class PersonMB implements Serializable {
 	private List<MarriageStatus> marriageStatusList;
 	private ContactNumber contactNumber;
 	private ContactNumber selectedContactNumber;
+	private Map<String, String> breadCrumb;
 
 	public List<Person> getPersonList() {
 		return personList;
@@ -84,8 +89,21 @@ public class PersonMB implements Serializable {
 		this.selectedContactNumber = selectedContactNumber;
 	}
 
+	public Map<String, String> getBreadCrumb() {
+		return breadCrumb;
+	}
+
+	public void setBreadCrumb(Map<String, String> breadCrumb) {
+		this.breadCrumb = breadCrumb;
+	}
+
 	public String personMng() {
 		this.setPersonList(this.personService.personFindAll());
+
+		// breadcrumb
+		this.breadCrumb = new LinkedHashMap<String, String>();
+		this.breadCrumb.put("صفحه اصلی", "/index.xhtml");
+
 		return "/pages/person/personList.xhtml";
 	}
 
@@ -97,6 +115,12 @@ public class PersonMB implements Serializable {
 	public String personCreateLink() {
 		this.marriageStatusList = marriageStatusService.marriageStatusFindAll();
 		this.person = new Person();
+
+		// breadcrumb
+		this.breadCrumb = new LinkedHashMap<String, String>();
+		this.breadCrumb.put("صفحه اصلی", "/index.xhtml");
+		this.breadCrumb.put("لیست افراد", "/pages/person/personList.xhtml");
+
 		return "/pages/person/personCreate.xhtml";
 	}
 
@@ -110,6 +134,12 @@ public class PersonMB implements Serializable {
 	public String personUpdateLink() {
 		this.setPerson(this.selectedPerson);
 		this.contactNumber = new ContactNumber();
+		
+		// breadcrumb
+		this.breadCrumb = new LinkedHashMap<String, String>();
+		this.breadCrumb.put("صفحه اصلی", "/index.xhtml");
+		this.breadCrumb.put("لیست افراد", "/pages/person/personList.xhtml");
+		
 		return "/pages/person/personUpdate.xhtml";
 	}
 
