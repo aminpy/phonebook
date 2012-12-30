@@ -9,7 +9,7 @@
 <ui:composition template="/template/base.xhtml"><ui:define name="content">
 <h:form id="editPerson" acceptcharset="UTF-8" enctype="application/form-data" prependId="false">
 	
-	<h1><h:outputText value="#{msgs.update_person}" /></h1>
+	<h1><h:outputText value="#{msgs.updatePerson}" /></h1>
 
 	<p:panel id="pnl" header="#{msgs.personalDetails}"
 		toggleable="true" toggleSpeed="500" closeSpeed="2000"
@@ -61,9 +61,8 @@
 		</p:panelGrid>
 	</p:panel>
 
-	<p:panel id="pnl2" header="#{msgs.otherDetails}"
-		toggleable="true" toggleSpeed="500" closeSpeed="2000"
-		widgetVar="panel2">
+	<p:panel id="pnl2" header="#{msgs.otherDetails}" toggleable="true"
+		toggleSpeed="500" closeSpeed="2000" widgetVar="panel2">
 		<p:tabView id="tabView">
 			<p:tab title="#{msgs.contactNumberList}">
 				<h:panelGroup styleClass="div plus-and-save">
@@ -81,15 +80,10 @@
 								</h:outputLabel>
 							</p:column>
 							<p:column>
-								<h:inputText id="number" 
-									value="#{personMB.contactNumber.number}" required="true"
-										requiredMessage="#{msgs.required}" />
-							</p:column>
-							<p:column styleClass="error-message">
-								<h:message for="number" />
+								<h:inputText id="number" value="#{personMB.contactNumber.number}" />
 							</p:column>
 						</p:row>
-	
+
 						<p:row>
 							<p:column>
 								<p:commandButton  value="#{msgs.add}"

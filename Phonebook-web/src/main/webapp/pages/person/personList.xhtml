@@ -4,11 +4,14 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core" xml:lang="en" lang="en"
-	xmlns:p="http://primefaces.org/ui">
+    xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/template/base.xhtml">
 <ui:define name="content">
 <h:form id="table_form">
+
+<!-- breadcrumb -->
+<h:link value="#{msgs.home}" outcome="/index.xhtml" /> &gt; personList
 
 <h:panelGroup styleClass="div plus-and-save">
 	<h:commandLink action="#{personMB.personCreateLink}" title="#{msgs.create_person}">
@@ -22,7 +25,10 @@
 	rowIndexVar="rowIndex" selectionMode="single"
 	selection="#{personMB.selectedPerson}"
 	emptyMessage="#{msgs.noRecordFound}"
-	filteredValue="#{personMB.filteredPersonList}" >
+	filteredValue="#{personMB.filteredPersonList}">
+<!-- 	paginator="true" rows="15" -->
+<!-- 	paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"   -->
+<!--     rowsPerPageTemplate="5,10,15,20,30,40"> -->
 
 	<p:ajax event="rowSelect" update=":table_form:display" oncomplete="personDialog.show()" />
 
@@ -48,7 +54,7 @@
 	</p:column>
 
 	<p:column headerText="#{msgs.marriageStatus}" filterBy="#{person.marriageStatus}"
-		filterMatchMode="contains" sortBy="#{person.marriageStatus}">
+		filterMatchMode="contains">
 	   #{person.marriageStatus}
 	</p:column>
 
@@ -69,7 +75,7 @@
 	</p:column>
 </p:dataTable>
 
-<p:dialog id="dialog" header="#{msgs.person_details}" widgetVar="personDialog"
+<p:dialog id="dialog" header="#{msgs.personDetails}" widgetVar="personDialog"
 	resizable="false" showEffect="explode" hideEffect="explode" width="750">
 	<p:accordionPanel multiple="true" id="display">
 		<p:tab title="#{msgs.person_details}">
@@ -124,7 +130,7 @@
 				</p:column>
 			</p:dataTable>
 		</p:tab>
-	</p:accordionPanel>
+    </p:accordionPanel>
 </p:dialog>
 </h:form>
 

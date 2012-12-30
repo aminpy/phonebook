@@ -7,11 +7,14 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/template/base.xhtml"><ui:define name="content">
-<h:form id="editPerson" 
-	acceptcharset="UTF-8" enctype="application/form-data"
+<h:form id="editPerson" acceptcharset="UTF-8" enctype="application/form-data"
 	prependId="false">
 	
-	<h1><h:outputText value="#{msgs.create_person}" /></h1>
+<!-- breadcrumb -->
+<h:link value="#{msgs.home}" outcome="/index.xhtml" /> &gt;
+<h:link value="#{msgs.personList}" outcome="/pages/person/personList.xhtml" /> &gt; #{msgs.createPerson}
+	
+	<h1><h:outputText value="#{msgs.createPerson}" /></h1>
 
 	<p:panel id="pnl" header="#{msgs.personalDetails}"
 		toggleable="true" toggleSpeed="500" closeSpeed="2000"
