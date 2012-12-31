@@ -7,6 +7,7 @@ import javax.ejb.Stateless;
 import com.aminpy.phonebook.dao.contactnumber.ContactNumberDAOLocal;
 import com.aminpy.phonebook.dao.person.PersonDAOLocal;
 import com.aminpy.phonebook.exception.person.NationalCodeDuplicationException;
+import com.aminpy.phonebook.exception.person.RemovingRelationException;
 import com.aminpy.phonebook.model.contactnumber.ContactNumber;
 import com.aminpy.phonebook.model.person.Person;
 
@@ -19,13 +20,25 @@ public class PersonService implements PersonServiceLocal {
 	private ContactNumberDAOLocal contactNumberDAO;
 
 	@Override
-	public boolean isNationalCodeExist(String nationalCode)
+	public void isNationalCodeExist(String nationalCode, Long personID)
 			throws NationalCodeDuplicationException {
-		if (personDAO.personRead(nationalCode).isEmpty()) {
+		if (!personDAO.personRead(nationalCode).isEmpty()) {
+			Person person = personDAO.personRead(nationalCode).get(0);
+
+			if (personID == null || person.getPersonID() != personID) {
+				throw new NationalCodeDuplicationException(
+						"National Code already exist!");
+			}
+		}
+	}
+
+	public boolean doesPersonHaveContactNumber(Person person)
+			throws RemovingRelationException {
+		if (contactNumberDAO.readByPerson(person).isEmpty()) {
 			return false;
 		}
-		throw new NationalCodeDuplicationException(
-				"National Code already exist!");
+		throw new RemovingRelationException(
+				"You must first remove contact number");
 	}
 
 	@Override

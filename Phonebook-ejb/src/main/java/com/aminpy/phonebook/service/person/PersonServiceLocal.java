@@ -15,7 +15,7 @@ public interface PersonServiceLocal {
 
 	public Person personEdit(Person person);
 
-	public boolean isNationalCodeExist(String nationalCode)
+	public void isNationalCodeExist(String nationalCode, Long personID)
 			throws NationalCodeDuplicationException;
 
 	public Person addContactNumber(Person person, ContactNumber contactNumber);

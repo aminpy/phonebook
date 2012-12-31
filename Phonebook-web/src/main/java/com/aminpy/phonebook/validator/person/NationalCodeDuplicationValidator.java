@@ -3,6 +3,7 @@ package com.aminpy.phonebook.validator.person;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
+import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.FacesValidator;
 import javax.faces.validator.Validator;
@@ -18,10 +19,14 @@ public class NationalCodeDuplicationValidator implements Validator {
 	private PersonServiceLocal personService;
 
 	@Override
-	public void validate(FacesContext arg0, UIComponent arg1, Object arg2)
+	public void validate(FacesContext context, UIComponent component, Object obj)
 			throws ValidatorException {
 		try {
-			this.personService.isNationalCodeExist(arg2.toString());
+			UIInput otherInput = (UIInput) context.getViewRoot().findComponent(
+					"editPerson:personID");
+
+			this.personService.isNationalCodeExist(obj.toString(),
+					otherInput == null ? null : (Long) otherInput.getValue());
 
 		} catch (NationalCodeDuplicationException e) {
 			FacesMessage msg = new FacesMessage(

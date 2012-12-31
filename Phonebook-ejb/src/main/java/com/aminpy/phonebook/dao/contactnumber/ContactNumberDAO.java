@@ -5,6 +5,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import com.aminpy.phonebook.model.contactnumber.ContactNumber;
+import com.aminpy.phonebook.model.person.Person;
 
 @Stateless
 public class ContactNumberDAO implements ContactNumberDAOLocal {
@@ -43,5 +44,12 @@ public class ContactNumberDAO implements ContactNumberDAOLocal {
 		em.remove(em.find(ContactNumber.class,
 				contactNumber.getContactNumberID()));
 		return contactNumber;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<ContactNumber> readByPerson(Person person) {
+		return (List<ContactNumber>) em.createNamedQuery(
+				"ContactNumber.findByPerson").setParameter("person", person);
 	}
 }

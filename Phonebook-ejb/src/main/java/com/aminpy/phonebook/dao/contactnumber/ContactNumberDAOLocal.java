@@ -2,6 +2,7 @@ package com.aminpy.phonebook.dao.contactnumber;
 
 import java.util.List;
 import com.aminpy.phonebook.model.contactnumber.ContactNumber;
+import com.aminpy.phonebook.model.person.Person;
 
 public interface ContactNumberDAOLocal {
 	public ContactNumber contactNumberCreate(ContactNumber contactNumber);
@@ -13,4 +14,6 @@ public interface ContactNumberDAOLocal {
 	public ContactNumber contactNumberUpdate(ContactNumber contactNumber);
 
 	public ContactNumber contactNumberDelete(ContactNumber contactNumber);
+
+	public List<ContactNumber> readByPerson(Person person);
 }

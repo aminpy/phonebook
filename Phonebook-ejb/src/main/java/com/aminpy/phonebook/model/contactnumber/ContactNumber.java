@@ -15,7 +15,8 @@ import com.aminpy.phonebook.model.person.Person;
 @Entity
 @NamedQueries({
 		@NamedQuery(name = "ContactNumber.findAll", query = "SELECT cn From ContactNumber cn"),
-		@NamedQuery(name = "ContactNumber.findByNumber", query = "SELECT cn FROM ContactNumber cn WHERE cn.number = :number") })
+		@NamedQuery(name = "ContactNumber.findByNumber", query = "SELECT cn FROM ContactNumber cn WHERE cn.number = :number"),
+		@NamedQuery(name = "ContactNumber.findByPerson", query = "SELECT cn FROM ContactNumber cn WHERE cn.person = :person") })
 public class ContactNumber implements Serializable {
 	private static final long serialVersionUID = 2090092013350476183L;
 	@Id

@@ -10,6 +10,8 @@
 <ui:composition template="/template/base.xhtml"><ui:define name="content">
 <h:form id="editPerson" acceptcharset="UTF-8" enctype="application/form-data" prependId="false">
 	
+	<h:inputHidden id="personID" value="#{personMB.selectedPerson.personID}" />
+	
 	<!-- breadcrumb -->
 	<c:forEach items="#{personMB.breadCrumb}" var="link" varStatus="varStatus">
 		<h:link value="#{link.key}" outcome="#{link.value}" />
@@ -59,7 +61,9 @@
 				<p:column colspan="2">
 					<h:inputText id="nationalCode" 
 						required="true" value="#{personMB.selectedPerson.nationalCode}"
-						requiredMessage="#{msgs.required}" />
+						requiredMessage="#{msgs.required}">
+						<f:validator validatorId="nationalCodeDuplicationValidator" />
+					</h:inputText>
 				</p:column>
 				<p:column styleClass="error-message">
 					<h:message for="nationalCode"  />
