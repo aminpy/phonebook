@@ -3,13 +3,16 @@ package com.aminpy.phonebook.managedbean.person;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.inject.Named;
 import java.io.Serializable;
 
+import com.aminpy.phonebook.common.MessageProvider;
+import com.aminpy.phonebook.exception.person.RemovingRelationException;
 import com.aminpy.phonebook.model.contactnumber.ContactNumber;
 import com.aminpy.phonebook.model.person.MarriageStatus;
 import com.aminpy.phonebook.model.person.Person;
@@ -108,8 +111,16 @@ public class PersonMB implements Serializable {
 	}
 
 	public void personDelete() {
-		this.personService.personRemove(this.selectedPerson);
-		this.personList.remove(this.personList.indexOf(this.selectedPerson));
+		try {
+			this.personService.doesPersonHaveContactNumber(this.selectedPerson);
+			this.personService.personRemove(this.selectedPerson);
+			this.personList
+					.remove(this.personList.indexOf(this.selectedPerson));
+		} catch (RemovingRelationException e) {
+			FacesContext context = FacesContext.getCurrentInstance();
+			String msg = new MessageProvider().getValue(e.getMessage());
+			context.addMessage(null, new FacesMessage(msg));
+		}
 	}
 
 	public String personCreateLink() {
@@ -134,12 +145,12 @@ public class PersonMB implements Serializable {
 	public String personUpdateLink() {
 		this.setPerson(this.selectedPerson);
 		this.contactNumber = new ContactNumber();
-		
+
 		// breadcrumb
 		this.breadCrumb = new LinkedHashMap<String, String>();
 		this.breadCrumb.put("صفحه اصلی", "/index.xhtml");
 		this.breadCrumb.put("لیست افراد", "/pages/person/personList.xhtml");
-		
+
 		return "/pages/person/personUpdate.xhtml";
 	}
 

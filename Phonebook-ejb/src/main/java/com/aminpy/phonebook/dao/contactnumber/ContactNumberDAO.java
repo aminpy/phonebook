@@ -50,6 +50,6 @@ public class ContactNumberDAO implements ContactNumberDAOLocal {
 	@Override
 	public List<ContactNumber> readByPerson(Person person) {
 		return (List<ContactNumber>) em.createNamedQuery(
-				"ContactNumber.findByPerson").setParameter("person", person);
+				"ContactNumber.findByPerson").setParameter("person", person).getResultList();
 	}
 }

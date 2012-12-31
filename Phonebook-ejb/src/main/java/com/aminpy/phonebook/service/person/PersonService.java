@@ -32,13 +32,13 @@ public class PersonService implements PersonServiceLocal {
 		}
 	}
 
-	public boolean doesPersonHaveContactNumber(Person person)
+	@Override
+	public void doesPersonHaveContactNumber(Person person)
 			throws RemovingRelationException {
-		if (contactNumberDAO.readByPerson(person).isEmpty()) {
-			return false;
+		if (!contactNumberDAO.readByPerson(person).isEmpty()) {
+			throw new RemovingRelationException(
+					"You must first remove contact number");
 		}
-		throw new RemovingRelationException(
-				"You must first remove contact number");
 	}
 
 	@Override

@@ -145,7 +145,7 @@
 	<p:confirmDialog id="confirmDialog" message="#{msgs.areYouSure}"
 		header="#{msgs.areYouSure}" severity="alert" widgetVar="confirmation">
 		<p:commandButton id="confirm" value="#{msgs.yes}"
-			update=":table_form:person_table" oncomplete="confirmation.hide()"
+			update=":table_form:person_table :table_form:growl" oncomplete="confirmation.hide()"
 			actionListener="#{personMB.personDelete}" />
 		<p:commandButton id="decline" value="#{msgs.no}" onclick="confirmation.hide()"
 			type="button" />
